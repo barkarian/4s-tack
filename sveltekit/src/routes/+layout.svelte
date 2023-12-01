@@ -1,7 +1,7 @@
 <script>
+	import ToggleMode from '$lib/components/navigation/ToggleMode.svelte';
 	import '../app.pcss';
-	import Navigation from './Navigation.svelte';
 </script>
 
-<Navigation></Navigation>
+<ToggleMode></ToggleMode>
 <slot />

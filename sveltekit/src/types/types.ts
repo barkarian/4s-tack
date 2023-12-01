@@ -1,4 +1,5 @@
-import type { Attribute, Common, Utils } from '@strapi/types';
+import type { Attribute, Common, EntityService, Utils } from '@strapi/types';
+import type { GetNonPopulatableKeys, GetPopulatableKeys } from '@strapi/types/dist/types/core/attributes';
 
 export type ID = `${number}` | number;
 export type BooleanValue = boolean | 'true' | 'false' | 't' | 'f' | '1' | '0' | 1 | 0;
@@ -8,11 +9,24 @@ export type TimeValue = Attribute.TimeValue | number;
 export type DateTimeValue = Attribute.DateTimeValue | number;
 export type TimeStampValue = Attribute.TimestampValue;
 
-export type GetValues<TSchemaUID extends Common.UID.Schema> =
+type AnyEntity = { id: EntityService.Params.Attribute.ID } & { [key: string]: any };
+export type GetValues<
+    TSchemaUID extends Common.UID.Schema,
+    TFields extends Attribute.GetKeys<TSchemaUID>,
+    TPopulate extends Attribute.GetKeys<TSchemaUID>
+> = Utils.Expression.If<
+    Common.AreSchemaRegistriesExtended,
+    Utils.Guard.Never<TFields | TPopulate, Attribute.GetKeys<TSchemaUID>> extends infer TKeys
+    ? Attribute.GetValues<TSchemaUID, TKeys>
+    : never,
+    AnyEntity
+>;
+
+export type GetValuesNested<TComponentsUIDs extends Common.UID.Schema> =
     {
-        [TKey in Attribute.GetOptionalKeys<TSchemaUID>]?: GetValue<Attribute.Get<TSchemaUID, TKey>>;
+        [TKey in Attribute.GetOptionalKeys<TComponentsUIDs>]?: GetValue<Attribute.Get<TComponentsUIDs, TKey>>;
     } & {
-        [TKey in Attribute.GetRequiredKeys<TSchemaUID>]-?: GetValue<Attribute.Get<TSchemaUID, TKey>>;
+        [TKey in Attribute.GetRequiredKeys<TComponentsUIDs>]-?: GetValue<Attribute.Get<TComponentsUIDs, TKey>>;
     }
 /**
 * Attribute.GetValue override with extended values
@@ -37,7 +51,11 @@ export type GetValue<TAttribute extends Attribute.Attribute> = Utils.Expression.
                     // Extract tuple values to a component uid union type
                     Utils.Array.Values<TComponentsUIDs> extends infer TComponentUID
                     ? TComponentUID extends Common.UID.Component
-                    ? GetValues<TComponentUID> & { __component: TComponentUID }
+                    ? GetValues<
+                        TComponentUID,
+                        GetNonPopulatableKeys<TComponentUID>,
+                        GetPopulatableKeys<TComponentUID>
+                    > & { __component: TComponentUID }
                     : never
                     : never
                 >
@@ -48,7 +66,11 @@ export type GetValue<TAttribute extends Attribute.Attribute> = Utils.Expression.
                 Utils.Expression.Extends<TAttribute, Attribute.OfType<'component'>>,
                 TAttribute extends Attribute.Component<infer TComponentUID, infer TRepeatable>
                 ? TComponentUID extends Common.UID.Component
-                ? GetValues<TComponentUID> extends infer TValues
+                ? GetValues<
+                    TComponentUID,
+                    GetNonPopulatableKeys<TComponentUID>,
+                    GetPopulatableKeys<TComponentUID>
+                > extends infer TValues
                 ? Utils.Expression.If<TRepeatable, TValues[], TValues>
                 : never
                 : never
@@ -63,12 +85,23 @@ export type GetValue<TAttribute extends Attribute.Attribute> = Utils.Expression.
     unknown
 >;
 
-interface AttributesWrapper<TContentTypeUID extends Common.UID.ContentType> {
-    attributes: GetValues<TContentTypeUID>
+export type StrapiFlattenEntity<TContentTypeUID extends Common.UID.ContentType> =
+    GetValues<
+        TContentTypeUID,
+        GetNonPopulatableKeys<TContentTypeUID>,
+        GetPopulatableKeys<TContentTypeUID>
+    >
+
+
+export interface StrapiNestedEntity<TContentTypeUID extends Common.UID.ContentType> {
+    attributes: GetValuesNested<
+        TContentTypeUID
+    >,
+    id?: number
 }
 
 export interface CollectionTypeResponse<TContentTypeUID extends Common.UID.ContentType> {
-    data: [AttributesWrapper<TContentTypeUID>]
+    data: [StrapiNestedEntity<TContentTypeUID>]
     meta: any
 }
 
