@@ -19,7 +19,7 @@
 		form-example
 	</a>
 	<a
-		href="/auth/sign-in"
+		href="/examples/auth/sign-in"
 		class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 	>
 		sign-in
