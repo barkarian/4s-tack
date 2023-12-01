@@ -1,15 +1,5 @@
-// import { z } from 'zod';
-// import { superValidate } from 'sveltekit-superforms/server';
+import type { StrapiFlattenEntity, StrapiNestedEntity } from "../lib/server/interfaces/strapi/types";
 
-import { json } from "@sveltejs/kit";
-import type { CollectionTypeResponse, GetValues, StrapiFlattenEntity, StrapiNestedEntity } from "../types/types";
-import type { GetNonPopulatableKeys, GetPopulatableKeys } from "@strapi/types/dist/types/core/attributes";
-
-// // Name has a default value just to display something in the form.
-// const schema = z.object({
-// 	email: z.string().email(),
-// 	password: z.string().min(1)
-// });
 async function fetchStrapiFlattenEntityExample() {
     const res = await fetch("http://localhost:1337/api/users-with-flat-response")
     const flattenData = await res.json() as StrapiFlattenEntity<"plugin::users-permissions.user">
