@@ -1,4 +1,4 @@
-import type { StrapiFlattenEntity, StrapiNestedEntity } from "../lib/server/interfaces/strapi/types";
+import type { StrapiFlattenEntity, StrapiNestedEntity } from "../../../lib/server/interfaces/strapi/types";
 //STRAPI FETCH FUNCTION EXAMPLE
 async function fetchStrapiFlattenEntityExample() {
     const res = await fetch("http://localhost:1337/api/users-with-flat-response")
