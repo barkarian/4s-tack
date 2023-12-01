@@ -8,7 +8,9 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "gen-strapi": "npm run strapi ts:generate-types --debug"
+    "gen-types-strapi": "npm run strapi ts:generate-types --debug",
+    "strapi-types-4-strapi": "s4ts -c types-strapi.stsconfig",
+    "strapi-types-4-sveltekit": "s4ts -c types-sveltekit.stsconfig"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "4.15.5",

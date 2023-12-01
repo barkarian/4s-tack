@@ -1,0 +1,26 @@
+{
+  "name": "types-gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "openapi-beds24-sveltekit": "openapi-generator-cli generate -i https://beds24.com/api/v2/apiV2.yaml -g typescript-fetch -o ../sveltekit/src/lib/server/openapi/beds24/codegen",
+    "openapi-beds24-strapi": "openapi-generator-cli generate -i https://beds24.com/api/v2/apiV2.yaml -g typescript-fetch -o ../strapi/types/openapi/beds24/codegen",
+    "openapi-beds24-all": "npm run openapi-beds24-sveltekit && npm run openapi-beds24-strapi",
+    "strapi-types-sveltekit": "cd ../strapi && npm run gen-types-strapi && npm run gen-types-strapi && strapi-types-4-strapi",
+    "strapi-types-strapi": "cd ../strapi && npm run strapi-types-4-sveltekit",
+    "strapi-types-all": "cd ../strapi && npm run gen-types-strapi && npm run gen-types-strapi && strapi-types-4-strapi && npm run strapi-types-4-sveltekit",
+    "t4all": "npm run t4beds24-all && cd ../strapi && npm run sts-frontend-w-config",
+    "format-all": "cd ../strapi-cms && npm run format && cd ../frontend && npm run format"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@oak-digital/types-4-strapi-2": "^1.0.2",
+    "@openapitools/openapi-generator-cli": "^2.7.0"
+  },
+  "devDependencies": {
+    "strapi-v4-to-typescript": "^1.0.2"
+  }
+}
