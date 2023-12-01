@@ -1,5 +1,5 @@
 import type { StrapiFlattenEntity, StrapiNestedEntity } from "../lib/server/interfaces/strapi/types";
-
+//STRAPI FETCH FUNCTION EXAMPLE
 async function fetchStrapiFlattenEntityExample() {
     const res = await fetch("http://localhost:1337/api/users-with-flat-response")
     const flattenData = await res.json() as StrapiFlattenEntity<"plugin::users-permissions.user">
@@ -19,12 +19,3 @@ async function fetchStrapiNestedntityExample() {
     nestedData.attributes.role;
     return nestedData
 }
-
-export const load = async () => {
-    // const data = useLoader
-    // // Server API:
-    // const form = await superValidate(schema);
-
-    // // Unless you throw, always return { form } in load and form actions.
-    // return { form };
-};
