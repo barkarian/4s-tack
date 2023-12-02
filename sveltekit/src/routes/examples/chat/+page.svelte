@@ -17,6 +17,42 @@
 			text: 'Glad to hear that. Working on anything exciting?',
 			user: 'Bob',
 			avatar: 'https://example.com/bob-avatar.jpg'
+		},
+		{ text: 'Hi there!', user: 'Alice', avatar: 'https://example.com/alice-avatar.jpg' },
+		{ text: 'Hello! How are you?', user: 'Bob', avatar: 'https://example.com/bob-avatar.jpg' },
+		{
+			text: 'I’m good, thanks for asking!',
+			user: 'Alice',
+			avatar: 'https://example.com/alice-avatar.jpg'
+		},
+		{
+			text: 'Glad to hear that. Working on anything exciting?',
+			user: 'Bob',
+			avatar: 'https://example.com/bob-avatar.jpg'
+		},
+		{ text: 'Hi there!', user: 'Alice', avatar: 'https://example.com/alice-avatar.jpg' },
+		{ text: 'Hello! How are you?', user: 'Bob', avatar: 'https://example.com/bob-avatar.jpg' },
+		{
+			text: 'I’m good, thanks for asking!',
+			user: 'Alice',
+			avatar: 'https://example.com/alice-avatar.jpg'
+		},
+		{
+			text: 'Glad to hear that. Working on anything exciting?',
+			user: 'Bob',
+			avatar: 'https://example.com/bob-avatar.jpg'
+		},
+		{ text: 'Hi there!', user: 'Alice', avatar: 'https://example.com/alice-avatar.jpg' },
+		{ text: 'Hello! How are you?', user: 'Bob', avatar: 'https://example.com/bob-avatar.jpg' },
+		{
+			text: 'I’m good, thanks for asking!',
+			user: 'Alice',
+			avatar: 'https://example.com/alice-avatar.jpg'
+		},
+		{
+			text: 'Glad to hear that. Working on anything exciting?',
+			user: 'Bob',
+			avatar: 'https://example.com/bob-avatar.jpg'
 		}
 	];
 	let newMessage = '';

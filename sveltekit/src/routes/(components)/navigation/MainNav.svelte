@@ -13,10 +13,16 @@
 		ease-pick
 	</a>
 	<a
-		href="/examples/form-example"
+		href="/examples/form"
 		class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 	>
 		form-example
+	</a>
+	<a
+		href="/examples/chat"
+		class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+	>
+		chat-example
 	</a>
 	<a
 		href="/examples/auth/sign-in"
