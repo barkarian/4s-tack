@@ -5,11 +5,22 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
 	import { sampleMessages } from './(data)/sampleMessages';
-	import { useChat } from 'ai/svelte';
+	import type { ChatInfos, ChatUser } from './Chat';
 	// const { messages, handleSubmit, input } = useChat({});
-
-	let messages = sampleMessages;
-	let newMessage = '';
+	export let currentUser: ChatUser = {
+		id: 'user-002',
+		username: 'Bob',
+		avatar:
+			'https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/06/15/Chris-Pratt.jpg'
+	};
+	export let chatInfos: ChatInfos = {
+		chatName: 'Alice',
+		id: 'user-001',
+		avatar: 'https://s.hdnux.com/photos/51/23/24/10827008/4/1200x0.jpg'
+	};
+	export let messages = sampleMessages;
+	export let newMessage = '';
+	export let handleSubmit;
 	let chatContainer: HTMLElement | undefined; // Regular variable for DOM element reference
 
 	function sendMessage() {
@@ -17,11 +28,13 @@
 			messages = [
 				...messages,
 				{
-					text: newMessage,
-					user: 'Current User',
+					content: newMessage,
+					userId: currentUser.id,
+					username: currentUser.username,
 					avatar: 'https://example.com/current-user-avatar.jpg'
 				}
 			];
+			console.log(messages);
 			newMessage = '';
 			scrollToBottom();
 		}
@@ -32,35 +45,36 @@
 			chatContainer.scrollTop = chatContainer.scrollHeight;
 		}
 	}
-
-	// New variables for the conversing partner's details
-	let partnerName = 'Partner Name'; // Replace with dynamic data if needed
-	let partnerAvatar = 'https://example.com/partner-avatar.jpg'; // Replace with dynamic data
 </script>
 
 <div class="flex flex-col" style={PUBLIC_PWA_BODY_VH}>
 	<!-- New section for displaying conversing partner's details -->
-	<div class="flex items-center p-4 border-b">
+	<div class="flex items-center justify-center p-4 border-b">
 		<Avatar.Root>
-			<Avatar.Image src={partnerAvatar} alt={`@${partnerName}`} class="w-12 h-12 mr-2" />
-			<Avatar.Fallback>{partnerName.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
+			<Avatar.Image src={chatInfos.avatar} alt={`@${chatInfos.chatName}`} class="w-12 h-12 mr-2" />
+			<Avatar.Fallback>{chatInfos.chatName.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
 		</Avatar.Root>
-		<strong>{partnerName}</strong>
+		<strong>{chatInfos.chatName}</strong>
 	</div>
 
 	<div bind:this={chatContainer} class="flex flex-col-reverse overflow-y-auto flex-1 p-4">
-		{#each messages as message}
-			<div class={`flex ${message.user === 'Alice' ? 'flex-row-reverse' : ''} items-end mb-4`}>
-				<Avatar.Root>
-					<Avatar.Image src={message.avatar} alt={`@${message.user}`} class="w-12 h-12" />
-					<Avatar.Fallback>{message.user.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
-				</Avatar.Root>
-				<Card class={`max-w-2/3 p-2 rounded-lg relative ml-2 mr-2 ${message.user.toLowerCase()}`}>
-					<strong>{message.user}</strong>
-					<p>{message.text}</p>
+		{#each messages.reverse() as message}
+			<div
+				class={`flex ${message.userId === currentUser.id ? 'flex-row-reverse' : ''} items-end mb-4`}
+			>
+				{#if message.userId !== currentUser.id}
+					<Avatar.Root>
+						<Avatar.Image src={message.avatar} alt={`@${message.username}`} class="w-12 h-12" />
+						<Avatar.Fallback>{message.username.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
+					</Avatar.Root>
+				{/if}
+				<Card
+					class={`max-w-2/3 p-2 rounded-lg relative ml-2 mr-2 ${message.username.toLowerCase()}`}
+				>
+					<p>{message.content}</p>
 					<div
 						class={`absolute w-0 h-0 border-15 border-transparent border-t-current ${
-							message.user === 'Alice'
+							message.userId === currentUser.id
 								? 'left-full border-l-current'
 								: 'right-full border-r-current'
 						}`}
