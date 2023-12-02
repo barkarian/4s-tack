@@ -3,8 +3,6 @@
 	import Card from '$lib/components/ui/card/card.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import * as Avatar from '$lib/components/ui/avatar';
-	import { writable } from 'svelte/store';
-	import PwaBodyContainer from '$lib/components/pwa/PwaBodyContainer.svelte';
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
 
 	let messages = [
@@ -52,7 +50,7 @@
 			<div class={`flex ${message.user === 'Alice' ? 'flex-row-reverse' : ''} items-end mb-4`}>
 				<Avatar.Root>
 					<Avatar.Image src={message.avatar} alt={`@${message.user}`} class="w-12 h-12" />
-					<Avatar.Fallback>{message.user.charAt(0)}</Avatar.Fallback>
+					<Avatar.Fallback>{message.user.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
 				</Avatar.Root>
 				<Card class={`max-w-2/3 p-2 rounded-lg relative ml-2 mr-2 ${message.user.toLowerCase()}`}>
 					<strong>{message.user}</strong>

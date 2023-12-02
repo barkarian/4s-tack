@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import * as Avatar from '$lib/components/ui/avatar';
-	import Button from '../ui/button/button.svelte';
+	import Button from '../../../lib/components/ui/button/button.svelte';
 </script>
 
 <DropdownMenu.Root positioning={{ placement: 'bottom-end' }}>
