@@ -5,6 +5,8 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
 	import { sampleMessages } from './(data)/sampleMessages';
+	import { useChat } from 'ai/svelte';
+	// const { messages, handleSubmit, input } = useChat({});
 
 	let messages = sampleMessages;
 	let newMessage = '';
