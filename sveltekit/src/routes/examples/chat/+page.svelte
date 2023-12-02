@@ -5,36 +5,34 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
 	import { sampleMessages } from './(data)/sampleMessages';
-	import type { ChatInfos, ChatUser } from './Chat';
+	import type { ChatInfos, ChatUser } from './(components)/Chat';
 	// const { messages, handleSubmit, input } = useChat({});
 	export let currentUser: ChatUser = {
 		id: 'user-002',
-		username: 'Bob',
-		avatar:
-			'https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/06/15/Chris-Pratt.jpg'
+		username: 'Bob'
 	};
 	export let chatInfos: ChatInfos = {
 		chatName: 'Alice',
-		id: 'user-001',
-		avatar: 'https://s.hdnux.com/photos/51/23/24/10827008/4/1200x0.jpg'
+		id: 'user-001'
 	};
 	export let messages = sampleMessages;
 	export let newMessage = '';
-	export let handleSubmit;
-	let chatContainer: HTMLElement | undefined; // Regular variable for DOM element reference
+	export let handleSubmit: CallableFunction = () => {
+		messages = [
+			{
+				content: newMessage,
+				userId: currentUser.id,
+				username: currentUser.username
+			},
+			...messages
+		];
+		console.log(messages);
+	};
 
+	let chatContainer: HTMLElement | undefined; // Regular variable for DOM element reference
 	function sendMessage() {
 		if (newMessage.trim() !== '') {
-			messages = [
-				...messages,
-				{
-					content: newMessage,
-					userId: currentUser.id,
-					username: currentUser.username,
-					avatar: 'https://example.com/current-user-avatar.jpg'
-				}
-			];
-			console.log(messages);
+			handleSubmit();
 			newMessage = '';
 			scrollToBottom();
 		}
@@ -50,7 +48,7 @@
 <div class="flex flex-col" style={PUBLIC_PWA_BODY_VH}>
 	<!-- New section for displaying conversing partner's details -->
 	<div class="flex items-center justify-center p-4 border-b">
-		<Avatar.Root>
+		<Avatar.Root class="mr-3">
 			<Avatar.Image src={chatInfos.avatar} alt={`@${chatInfos.chatName}`} class="w-12 h-12 mr-2" />
 			<Avatar.Fallback>{chatInfos.chatName.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
 		</Avatar.Root>
@@ -58,7 +56,7 @@
 	</div>
 
 	<div bind:this={chatContainer} class="flex flex-col-reverse overflow-y-auto flex-1 p-4">
-		{#each messages.reverse() as message}
+		{#each [...messages] as message}
 			<div
 				class={`flex ${message.userId === currentUser.id ? 'flex-row-reverse' : ''} items-end mb-4`}
 			>
