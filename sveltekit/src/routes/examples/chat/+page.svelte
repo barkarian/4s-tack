@@ -4,57 +4,9 @@
 	import Input from '$lib/components/ui/input/input.svelte';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
+	import { sampleMessages } from './(data)/sampleMessages';
 
-	let messages = [
-		{ text: 'Hi there!', user: 'Alice', avatar: 'https://example.com/alice-avatar.jpg' },
-		{ text: 'Hello! How are you?', user: 'Bob', avatar: 'https://example.com/bob-avatar.jpg' },
-		{
-			text: 'I’m good, thanks for asking!',
-			user: 'Alice',
-			avatar: 'https://example.com/alice-avatar.jpg'
-		},
-		{
-			text: 'Glad to hear that. Working on anything exciting?',
-			user: 'Bob',
-			avatar: 'https://example.com/bob-avatar.jpg'
-		},
-		{ text: 'Hi there!', user: 'Alice', avatar: 'https://example.com/alice-avatar.jpg' },
-		{ text: 'Hello! How are you?', user: 'Bob', avatar: 'https://example.com/bob-avatar.jpg' },
-		{
-			text: 'I’m good, thanks for asking!',
-			user: 'Alice',
-			avatar: 'https://example.com/alice-avatar.jpg'
-		},
-		{
-			text: 'Glad to hear that. Working on anything exciting?',
-			user: 'Bob',
-			avatar: 'https://example.com/bob-avatar.jpg'
-		},
-		{ text: 'Hi there!', user: 'Alice', avatar: 'https://example.com/alice-avatar.jpg' },
-		{ text: 'Hello! How are you?', user: 'Bob', avatar: 'https://example.com/bob-avatar.jpg' },
-		{
-			text: 'I’m good, thanks for asking!',
-			user: 'Alice',
-			avatar: 'https://example.com/alice-avatar.jpg'
-		},
-		{
-			text: 'Glad to hear that. Working on anything exciting?',
-			user: 'Bob',
-			avatar: 'https://example.com/bob-avatar.jpg'
-		},
-		{ text: 'Hi there!', user: 'Alice', avatar: 'https://example.com/alice-avatar.jpg' },
-		{ text: 'Hello! How are you?', user: 'Bob', avatar: 'https://example.com/bob-avatar.jpg' },
-		{
-			text: 'I’m good, thanks for asking!',
-			user: 'Alice',
-			avatar: 'https://example.com/alice-avatar.jpg'
-		},
-		{
-			text: 'Glad to hear that. Working on anything exciting?',
-			user: 'Bob',
-			avatar: 'https://example.com/bob-avatar.jpg'
-		}
-	];
+	let messages = sampleMessages;
 	let newMessage = '';
 	let chatContainer: HTMLElement | undefined; // Regular variable for DOM element reference
 
@@ -78,9 +30,22 @@
 			chatContainer.scrollTop = chatContainer.scrollHeight;
 		}
 	}
+
+	// New variables for the conversing partner's details
+	let partnerName = 'Partner Name'; // Replace with dynamic data if needed
+	let partnerAvatar = 'https://example.com/partner-avatar.jpg'; // Replace with dynamic data
 </script>
 
 <div class="flex flex-col" style={PUBLIC_PWA_BODY_VH}>
+	<!-- New section for displaying conversing partner's details -->
+	<div class="flex items-center p-4 border-b">
+		<Avatar.Root>
+			<Avatar.Image src={partnerAvatar} alt={`@${partnerName}`} class="w-12 h-12 mr-2" />
+			<Avatar.Fallback>{partnerName.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
+		</Avatar.Root>
+		<strong>{partnerName}</strong>
+	</div>
+
 	<div bind:this={chatContainer} class="flex flex-col-reverse overflow-y-auto flex-1 p-4">
 		{#each messages as message}
 			<div class={`flex ${message.user === 'Alice' ? 'flex-row-reverse' : ''} items-end mb-4`}>
