@@ -5,10 +5,16 @@
 	export let avatar = '';
 </script>
 
-<div class="flex items-center justify-center p-4 border-b">
-	<Avatar.Root class="mr-3">
-		<Avatar.Image src={avatar} alt={`@${chatName}`} class="w-12 h-12 mr-2" />
-		<Avatar.Fallback>{chatName.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
-	</Avatar.Root>
-	<strong>{chatName}</strong>
-</div>
+<header class="border-b dark:border-zinc-700 p-4">
+	<h2 class="text-xl font-bold flex items-center gap-2">
+		<Avatar.Root class="relative overflow-visible w-10 h-10">
+			<span class="absolute right-0 top-0 flex h-3 w-3 rounded-full bg-green-600"></span>
+			<Avatar.Image src={avatar} alt={`@${chatName}`} />
+			<Avatar.Fallback>{chatName.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
+		</Avatar.Root>
+		<div>
+			Contact Name
+			<span class="text-xs text-green-600 block">Online</span>
+		</div>
+	</h2>
+</header>

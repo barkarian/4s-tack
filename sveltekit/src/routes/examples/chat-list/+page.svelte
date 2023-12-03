@@ -1,10 +1,10 @@
 <script lang="ts">
-	import ChatHeader from './(components)/ChatHeader.svelte';
-	import MessageList from './(components)/MessageList.svelte';
-	import MessageInput from './(components)/MessageInput.svelte';
+	import ChatHeader from '../chat/(components)/ChatHeader.svelte';
+	import MessageList from '../chat/(components)/MessageList.svelte';
+	import MessageInput from '../chat/(components)/MessageInput.svelte';
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
 	import type { PageData } from './$types';
-	import ChatList from './(components)/ChatList.svelte';
+	import ChatList from '../chat/(components)/ChatList.svelte';
 	let chatContainer: HTMLElement | undefined;
 
 	//LOAD currentUser,chatInfos and messages from the API
