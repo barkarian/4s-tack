@@ -5,8 +5,8 @@
 
 	export let newMessage = '';
 
+	//Create event dispatcher
 	const dispatch = createEventDispatcher();
-
 	function send() {
 		if (newMessage.trim() !== '') {
 			dispatch('send');

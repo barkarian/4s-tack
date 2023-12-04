@@ -3,10 +3,8 @@
 	import MessageItem from './MessageItem.svelte';
 	export let messages: ChatMessage[] = [];
 	export let currentUser: ChatUser;
-	$: if (messages) {
-	}
 </script>
 
-{#each messages as message}
+{#each [...messages].reverse() as message}
 	<MessageItem {message} {currentUser} />
 {/each}
