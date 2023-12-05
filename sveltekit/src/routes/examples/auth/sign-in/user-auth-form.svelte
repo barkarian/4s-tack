@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GoogleIcon from '$lib/components/docs/icons/GoogleIcon.svelte';
+	import GoogleIcon from '$lib/components/ui-docs/icons/GoogleIcon.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import Label from '$lib/components/ui/label/label.svelte';

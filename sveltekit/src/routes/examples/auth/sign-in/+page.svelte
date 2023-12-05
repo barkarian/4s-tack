@@ -3,24 +3,8 @@
 	import UserAuthForm from './user-auth-form.svelte';
 </script>
 
-<div class="md:hidden">
-	<img
-		src="/examples/authentication-light.png"
-		width={1280}
-		height={843}
-		alt="Authentication"
-		class="block dark:hidden"
-	/>
-	<img
-		src="/examples/authentication-dark.png"
-		width={1280}
-		height={843}
-		alt="Authentication"
-		class="hidden dark:block"
-	/>
-</div>
 <div
-	class="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0"
+	class="container relative flex h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0"
 >
 	<div class="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
 		<div
