@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Easepick from '$lib/components/ui-easepick/core/Easepick.svelte';
+	import Easepick from '$lib/components/ui-custom/easepick/core/Easepick.svelte';
 	import { RangePlugin } from '@easepick/range-plugin';
 
-	import type { EasepickConfiguration } from '$lib/components/ui-easepick/core/Easepick';
+	import type { EasepickConfiguration } from '$lib/components/ui-custom/easepick/core/Easepick';
 	const easepickConfig: EasepickConfiguration = {
 		calendars: 2,
 		grid: 2,
