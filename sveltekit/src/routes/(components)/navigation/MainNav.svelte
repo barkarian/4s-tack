@@ -25,7 +25,7 @@
 		chat-example
 	</a>
 	<a
-		href="/examples/auth/sign-in"
+		href="/auth/sign-in"
 		class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
 	>
 		sign-in

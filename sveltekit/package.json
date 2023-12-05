@@ -41,7 +41,7 @@
 	"dependencies": {
 		"@easepick/bundle": "^1.2.1",
 		"ai": "^2.2.27",
-		"bits-ui": "^0.9.9",
+		"bits-ui": "^0.10.3",
 		"clsx": "^2.0.0",
 		"formsnap": "^0.4.1",
 		"lucide-svelte": "^0.294.0",
