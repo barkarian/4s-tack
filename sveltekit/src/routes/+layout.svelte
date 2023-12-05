@@ -1,6 +1,5 @@
 <script>
 	import Navigation from './(components)/navigation/Navigation.svelte';
-	import ToggleMode from './(components)/navigation/ToggleMode.svelte';
 	import '../app.pcss';
 	import Footer from './(components)/footer/Footer.svelte';
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';

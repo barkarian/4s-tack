@@ -28,7 +28,7 @@
 	}
 </script>
 
-<div class="flex flex-col" style={PUBLIC_PWA_BODY_VH}>
+<div class="flex flex-col h-full">
 	<ChatHeader chatName={chatInfos.chatName} avatar={chatInfos?.meta?.avatar} />
 	<div bind:this={chatContainer} class="flex flex-col-reverse overflow-y-auto flex-1 p-4">
 		{#each [...messages].reverse() as message}

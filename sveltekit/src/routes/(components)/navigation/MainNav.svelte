@@ -30,4 +30,10 @@
 	>
 		sign-in
 	</a>
+	<a
+		href="/examples/strapi-endpoints"
+		class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+	>
+		strapi-endpoints
+	</a>
 </nav>

@@ -4,4 +4,6 @@
 	export let data: PageData;
 </script>
 
-<ExampleForm form={data.form} />
+<div class="flex flex-col h-full">
+	<ExampleForm form={data.form} />
+</div>
