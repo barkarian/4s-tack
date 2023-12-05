@@ -9,27 +9,30 @@ type MetaChatInfos = {
 }
 
 //Standard in Component
-export type ChatInfos = {
+export type ChatInfosType = {
     chatName: string,
     id: string,
     chatUsers?: ChatUser[]
     meta?: MetaChatInfos
 }
 
-export type ChatUser = {
+export type ChatUserType = {
+    currentUser: any;
     username: string,
     id: string,
+    status?: "active" | "inactive"
     meta?: MetaChatUser
 }
 
-export type ChatMessage = {
+export type ChatMessageType = {
     username: string,
     userId: string,
     content: string,
+    userIsActive?: "active" | "inactive"
     avatar?: string
 }
 
-export type ChatConfig = {
+export type ChatConfigType = {
     currentUser: ChatUser,
     chatInfos: ChatInfos,
     messages: ChatMessage[]

@@ -1,7 +1,7 @@
-import type { ChatConfig, ChatInfos, ChatUser } from "./(components)/Chat";
+import type { ChatConfigType } from "./(components)/Chat";
 import type { PageServerLoad } from "./$types";
 import { sampleMessages } from "./(data)/sampleMessages";
-let chatConfig: ChatConfig = {
+let chatConfig: ChatConfigType = {
     currentUser: {
         id: 'user-002',
         username: 'Bob'
