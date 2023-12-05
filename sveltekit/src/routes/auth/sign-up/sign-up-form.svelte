@@ -14,8 +14,9 @@
 	let errorMessage: any;
 	async function handleLogin() {
 		try {
-			const response = await strapiApi.login({
-				identifier: form.data.username,
+			const response = await strapiApi.register({
+				email: form.data.email,
+				username: form.data.username,
 				password: form.data.password
 			});
 			console.log({ response });
@@ -35,7 +36,15 @@
 			<Form.Item>
 				<Form.Label>Username</Form.Label>
 				<Form.Input />
-				<Form.Description>Username or Email</Form.Description>
+				<Form.Description>Username</Form.Description>
+				<Form.Validation />
+			</Form.Item>
+		</Form.Field>
+		<Form.Field {config} name="email">
+			<Form.Item>
+				<Form.Label>email</Form.Label>
+				<Form.Input />
+				<Form.Description>Email</Form.Description>
 				<Form.Validation />
 			</Form.Item>
 		</Form.Field>
