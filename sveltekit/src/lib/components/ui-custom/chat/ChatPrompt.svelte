@@ -13,6 +13,7 @@
 </script>
 
 <div class="flex justify-between items-center p-4 border-t">
+	<slot />
 	<Input bind:value={newMessage} placeholder="Type a message..." class="flex-1 mr-2" />
 	<Button on:click={send}>Send</Button>
 </div>

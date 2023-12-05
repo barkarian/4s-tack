@@ -35,5 +35,7 @@
 		{/each}
 	</div>
 	<!-- Chat Prompt -->
-	<ChatPrompt bind:newMessage on:send={sendMessage} />
+	<ChatPrompt bind:newMessage on:send={sendMessage}>
+		<!-- SLOT -->
+	</ChatPrompt>
 </div>
