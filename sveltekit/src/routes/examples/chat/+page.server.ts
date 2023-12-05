@@ -1,4 +1,4 @@
-import type { ChatConfigType } from "./(components)/Chat";
+import type { ChatConfigType } from "$lib/components/ui-custom/chat/Chat";
 import type { PageServerLoad } from "./$types";
 import { sampleMessages } from "./(data)/sampleMessages";
 let chatConfig: ChatConfigType = {

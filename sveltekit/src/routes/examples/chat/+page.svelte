@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
-	import ChatHeader from './(components)/ChatHeader.svelte';
-	import ChatMessage from './(components)/ChatMessage.svelte';
-	import ChatPrompt from './(components)/ChatPrompt.svelte';
+	import ChatHeader from '$lib/components/ui-custom/chat/ChatHeader.svelte';
+	import ChatMessage from '$lib/components/ui-custom/chat/ChatMessage.svelte';
+	import ChatPrompt from '$lib/components/ui-custom/chat/ChatPrompt.svelte';
 	import type { PageData } from './$types';
 	let chatContainer: HTMLElement | undefined;
 
