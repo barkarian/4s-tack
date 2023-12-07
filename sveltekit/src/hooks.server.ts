@@ -1,25 +1,13 @@
-import { strapiApi } from '$lib/components/strapi/StrapiConfig';
-import type { StrapiFlattenEntity } from '$lib/server/interfaces/strapi/types';
+import { getServerSideUserFromJwt } from '$lib/server/interfaces/strapi/utils/AuthUtils';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 
 
 const setLocals: Handle = async ({ event, resolve }) => {
     console.log({ msg: "HOOK:inside setLocals Element" })
-    const jwt = event.cookies.get('strapi_jwt');
+    const jwt = event.cookies.get('jwt');
     //Get User Infos
-    if (!jwt) {
-        event.locals.userInfo = undefined
-    } else {
-        const userInfoResponse = await strapiApi.axios({
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${jwt}`
-            },
-            url: "users/me"
-        });
-        event.locals.userInfo = userInfoResponse.data;
-    }
+    event.locals.userInfo = await getServerSideUserFromJwt(jwt)
     //Get other important infos...
     //add your code here
     return resolve(event);

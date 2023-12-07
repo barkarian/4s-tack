@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { superForm } from 'sveltekit-superforms/client';
 	import type { PageData } from './$types';
 	import SignUpForm from './sign-up-form.svelte';
 	export let data: PageData;
@@ -10,7 +11,7 @@
 			<h1 class="text-2xl font-semibold tracking-tight">Sign up</h1>
 			<p class="text-sm text-muted-foreground">Sign up and discover!</p>
 		</div>
-		<SignUpForm form={data.form} />
+		<SignUpForm {data} />
 		<p class="px-8 text-center text-sm text-muted-foreground">
 			Thank you for working with {' '}
 			<a

@@ -9,29 +9,16 @@
 	import type { SuperValidated } from 'sveltekit-superforms';
 	import { strapiApi } from '$lib/components/strapi/StrapiConfig';
 	import { goto } from '$app/navigation';
+	import { beforeUpdate } from 'svelte';
+	import { superForm } from 'sveltekit-superforms/client';
+	import type { PageData } from './$types';
+	export let data: PageData;
 
-	export let form: SuperValidated<FormSchema>;
-	let errorMessage: any;
-	async function handleLogin() {
-		try {
-			const response = await strapiApi.register({
-				email: form.data.email,
-				username: form.data.username,
-				password: form.data.password
-			});
-			console.log({ response });
-			// Navigate to a protected route or dashboard
-			goto('/');
-		} catch (err) {
-			errorMessage = err;
-			console.log(err);
-		}
-	}
+	let form: SuperValidated<FormSchema> = data.form;
 </script>
 
-{errorMessage}
 <div class="grid gap-6">
-	<Form.Root on:submit={handleLogin} method="POST" {form} schema={formSchema} let:config>
+	<Form.Root id="123412421" method="POST" {form} schema={formSchema} let:config>
 		<Form.Field {config} name="username">
 			<Form.Item>
 				<Form.Label>Username</Form.Label>
