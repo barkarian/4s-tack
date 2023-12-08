@@ -3,17 +3,17 @@
 	import * as Card from '$lib/components/ui/card';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	$page.url.pathname;
 </script>
 
+{$page.url}
 <div class="flex flex-col items-center justify-center h-full">
 	<Tabs.Root
-		value={$page.url.pathname === '/auth/sign-in' ? 'sign-in' : 'sign-up'}
+		value={$page.url.pathname.includes('sign-in') ? 'sign-in' : 'sign-up'}
 		class="w-[400px]"
 	>
 		<Tabs.List class="grid w-full grid-cols-2">
-			<Tabs.Trigger on:click={() => goto('/auth/sign-in')} value="sign-in">Sign in</Tabs.Trigger>
-			<Tabs.Trigger on:click={() => goto('/auth/sign-up')} value="sign-up">Sign up</Tabs.Trigger>
+			<Tabs.Trigger on:click={() => goto('sign-in')} value="sign-in">Sign in</Tabs.Trigger>
+			<Tabs.Trigger on:click={() => goto('sign-up')} value="sign-up">Sign up</Tabs.Trigger>
 		</Tabs.List>
 		<Tabs.Content value="sign-in">
 			<Card.Root>

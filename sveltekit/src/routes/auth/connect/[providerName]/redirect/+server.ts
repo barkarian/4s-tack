@@ -1,9 +1,9 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { PUBLIC_STRAPI_URL } from '$env/static/public';
+const redirectAfterSuccessfulAuthentication = "/auth/authenticated"
 
 export const GET: RequestHandler = async (event) => {
     const providerName = event.params.providerName;
-    const access_token = event.url.searchParams.get("access_token");
     const callbackUrl = `${PUBLIC_STRAPI_URL}/api/auth/${providerName}/callback${event.url.search}`;
     // console.log({ providerName, callbackUrl, search: event.url.search })
 
@@ -18,10 +18,11 @@ export const GET: RequestHandler = async (event) => {
             path: "/",
             maxAge: 60 * 60
         })
+        console.log("hhhhehtwtewt")
         return json(
             { message: 'Login successful' },
             {
-                headers: { 'Location': '/', 'x-custom-header': 'potato' },
+                headers: { 'Location': redirectAfterSuccessfulAuthentication, 'x-custom-header': 'potato' },
                 status: 303
             }
         );

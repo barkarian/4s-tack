@@ -4,7 +4,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 
 
 const setLocals: Handle = async ({ event, resolve }) => {
-    console.log({ msg: "HOOK:inside setLocals Element" })
+    // console.log({ msg: "HOOK:inside setLocals Element" })
     const jwt = event.cookies.get('jwt');
     //Get User Infos
     event.locals.userInfo = await getServerSideUserFromJwt(jwt)
@@ -14,7 +14,8 @@ const setLocals: Handle = async ({ event, resolve }) => {
 }
 
 const userAuth: Handle = async ({ event, resolve }) => {
-    console.log({ msg: "HOOK:inside userAuth Sequence Element", locals: event.locals })
+
+    console.log({ msg: "HOOK:inside userAuth Sequence Element", pathname: event.url.pathname, locals: event.locals })
     return resolve(event)
 }
 
