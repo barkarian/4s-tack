@@ -1,6 +1,10 @@
 <script lang="ts">
+	import Button from '$lib/components/ui/button/button.svelte';
+	import { redirect } from '@sveltejs/kit';
 	import type { PageData } from './$types';
 	import SignInForm from './sign-in-form.svelte';
+	import { PUBLIC_STRAPI_URL } from '$env/static/public';
+	import { goto } from '$app/navigation';
 	export let data: PageData;
 </script>
 
@@ -24,3 +28,9 @@
 		</p>
 	</div>
 </div>
+
+<Button
+	on:click={() => {
+		goto(`${PUBLIC_STRAPI_URL}/api/connect/auth0`);
+	}}>Auth with Github</Button
+>
