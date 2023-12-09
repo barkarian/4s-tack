@@ -1,7 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 import { PUBLIC_COOKIE_AGE, PUBLIC_STRAPI_URL } from '$env/static/public';
 import type { PageServerLoad } from './$types';
-const redirectAfterSuccessfulAuthentication = "/auth/authenticated"
+const successRedirectUrlPath: string = "/auth/authenticated"
+const failureRedirectUrlPath: string | undefined = undefined
 
 export const load: PageServerLoad = async (event) => {
     const callbackUrl = `${PUBLIC_STRAPI_URL}/api/auth/${event.params.providerName}/callback${event.url.search}`;
@@ -20,6 +21,7 @@ export const load: PageServerLoad = async (event) => {
         // console.log({ data })
         let errorMessage: string = data?.error?.name && data?.error?.status && data?.error?.message ? `${data?.error?.status} ${data?.error?.name}\nAn error occurred during authentication:${data?.error?.message}\n Please try again.` :
             "An error occured during authentication"
+        if (failureRedirectUrlPath) throw redirect(302, failureRedirectUrlPath)
         return {
             errorMessage: errorMessage
         }
@@ -29,5 +31,6 @@ export const load: PageServerLoad = async (event) => {
         path: "/",
         maxAge: Number(PUBLIC_COOKIE_AGE)
     })
-    throw redirect(303, redirectAfterSuccessfulAuthentication)
+    // redirect(303, "/auth/authenticated")
+    throw redirect(302, successRedirectUrlPath)
 };

@@ -7,6 +7,7 @@
 	console.log({ data });
 
 	$userStore = data.userStoreData;
+
 	onMount(() => {
 		// Store the value in local storage when the component mounts
 		localStorage.setItem('userStoreData', JSON.stringify($userStore));

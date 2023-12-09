@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { beforeUpdate, onMount } from 'svelte';
 	import type { PageData } from './$types';
+	import { redirect } from '@sveltejs/kit';
 
 	export let data: PageData;
 	const { errorMessage } = data;

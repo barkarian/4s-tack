@@ -1,5 +1,5 @@
 import { getServerSideUserFromJwt } from '$lib/server/interfaces/strapi/utils/AuthUtils';
-import type { Handle } from '@sveltejs/kit';
+import { redirect, type Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 
 
@@ -8,6 +8,9 @@ const setLocals: Handle = async ({ event, resolve }) => {
     const jwt = event.cookies.get('jwt');
     //Get User Infos
     event.locals.userInfo = await getServerSideUserFromJwt(jwt)
+    if (jwt && !event.locals.userInfo) {
+        throw redirect(302, "/auth/logout")
+    }
     //Get other important infos...
     //add your code here
     return resolve(event);
