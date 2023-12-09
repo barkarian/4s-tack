@@ -1,4 +1,4 @@
-import { getServerSideUserFromJwt } from '$lib/server/interfaces/strapi/utils/AuthUtils';
+import { getServerSideUserFromJwt } from './routes/auth/(components)/AuthUtils.server';
 import { redirect, type Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 

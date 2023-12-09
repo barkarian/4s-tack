@@ -3,7 +3,7 @@ import { superValidate } from "sveltekit-superforms/server";
 import { formSchema } from "./schema";
 import { fail } from "@sveltejs/kit";
 import { strapiApi } from "$lib/components/strapi/StrapiConfig";
-import { getFrontEndUserFromJwt, getServerSideUserFromJwt } from "$lib/server/interfaces/strapi/utils/AuthUtils";
+import { getFrontEndUserFromJwt, getServerSideUserFromJwt } from "../../../auth/(components)/AuthUtils.server";
 
 export const load: PageServerLoad = () => {
     return {

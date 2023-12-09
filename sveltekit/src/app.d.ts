@@ -1,6 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type { StrapiFlattenEntity } from "$lib/server/interfaces/strapi/types";
+import type { StrapiFlattenEntity } from "$lib/server/interfaces/strapi/utils/types";
 
 // for information about these interfaces
 declare global {

@@ -1,5 +1,5 @@
 import { strapiApi } from "$lib/components/strapi/StrapiConfig";
-import type { StrapiFlattenEntity } from "../types";
+import type { StrapiFlattenEntity } from "../../../lib/server/interfaces/strapi/utils/types";
 
 export async function getServerSideUserFromJwt(jwt: string | undefined): Promise<StrapiFlattenEntity<"plugin::users-permissions.user"> | undefined> {
     if (!jwt) return undefined

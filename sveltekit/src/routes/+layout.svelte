@@ -6,18 +6,17 @@
 	import { onMount } from 'svelte';
 	import { userStore } from '$lib/stores';
 	//ON HOT REFRESHES
-	// onMount(() => {
-	// 	console.log('Layout');
-	// 	// Check if localStorage is available and userStoreData exists
-	// 	if (typeof window !== 'undefined') {
-	// 		console.log("Layout typeof window !== 'undefined'");
-	// 		const storedData = localStorage.getItem('userStoreData');
-	// 		if (storedData) {
-	// 			// Parse the JSON object and update the userStore
-	// 			$userStore = JSON.parse(storedData);
-	// 		}
-	// 	}
-	// });
+	onMount(() => {
+		// Check if localStorage is available and userStoreData exists
+		if (typeof window !== 'undefined') {
+			console.log('HOT REFRESH -LOAD FROM LOCAL STORAGE');
+			const storedData = localStorage.getItem('userStoreData');
+			if (storedData) {
+				// Parse the JSON object and update the userStore
+				$userStore = JSON.parse(storedData);
+			}
+		}
+	});
 </script>
 
 <div class="flex flex-col min-h-screen">
