@@ -16,8 +16,7 @@
 <p>
 	The UserStore value has just be set to the value:{JSON.stringify($userStore)}
 </p>
-<p>Add more or less properties to it by modifying /auth/authenticated/+page.server.ts</p>
 <p>
-	You can also modify *UserStoreData Type* that you will see there(and is located inside
-	$lib/stores.ts)
+	Add more or less properties to it by modifying /auth/authenticated/+page.server.ts and the
+	*UserStoreData Type* that is there
 </p>

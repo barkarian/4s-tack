@@ -3,6 +3,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import Button from '../../../lib/components/ui/button/button.svelte';
 	import { goto } from '$app/navigation';
+	import { userStore } from '$lib/stores';
 </script>
 
 <DropdownMenu.Root>
@@ -17,8 +18,8 @@
 	<DropdownMenu.Content class="w-56">
 		<DropdownMenu.Label class="font-normal">
 			<div class="flex flex-col space-y-1">
-				<p class="text-sm font-medium leading-none">shadcn</p>
-				<p class="text-xs leading-none text-muted-foreground">m@example.com</p>
+				<p class="text-sm font-medium leading-none">{$userStore?.username}</p>
+				<p class="text-xs leading-none text-muted-foreground">{$userStore?.email}</p>
 			</div>
 		</DropdownMenu.Label>
 		<DropdownMenu.Separator />
@@ -38,8 +39,8 @@
 			<DropdownMenu.Item>New Team</DropdownMenu.Item>
 		</DropdownMenu.Group>
 		<DropdownMenu.Separator />
-		<DropdownMenu.Item>
-			<Button on:click={() => goto('/auth/logout')}>Log out</Button>
+		<DropdownMenu.Item on:click={() => goto('/auth/logout')}>
+			Log out
 			<DropdownMenu.Shortcut>⇧⌘Q</DropdownMenu.Shortcut>
 		</DropdownMenu.Item>
 	</DropdownMenu.Content>

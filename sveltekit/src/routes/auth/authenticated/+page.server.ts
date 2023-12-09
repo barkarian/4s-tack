@@ -1,5 +1,4 @@
 import type { UserStoreData } from "$lib/stores";
-import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = (event) => {
@@ -7,9 +6,10 @@ export const load: PageServerLoad = (event) => {
 
     //Create user Store
     const userStoreData: UserStoreData = {
-        email: "dasdasd",
-        username: "dasdasd"
+        email: userServer?.email ?? "",
+        username: userServer?.username ?? ""
     }
+
     return {
         userStoreData
     }

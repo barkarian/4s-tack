@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { userStore } from '$lib/stores';
+	import { onMount } from 'svelte';
 
-	$userStore = undefined;
-	localStorage.removeItem('userStoreData');
-	//Where to redirect?
-	// goto('/');
+	onMount(() => {
+		$userStore = undefined;
+		localStorage.removeItem('userStoreData');
+		// goto('/');
+	});
 </script>
 
-<p>Go inside /auth/logout and tell it where to redirect</p>
+<p>
+	Cookies,Local Storage and stores are clear...Go to /auth/logout and tell it where it should
+	redirect after here
+</p>
