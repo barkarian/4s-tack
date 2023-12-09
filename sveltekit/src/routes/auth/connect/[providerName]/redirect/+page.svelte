@@ -7,5 +7,5 @@
 
 <!-- AUTH FAIL SCHENARIO -->
 <!-- (SUCCESSFUL AUTH REDIRECTS TO /auth/authenticated) -->
-<p>To change the error message or redirect somewhere go on /connect/[providerName]/redirect</p>
+<p>Modify from: /connect/[providerName]/redirect</p>
 <p>{errorMessage}</p>

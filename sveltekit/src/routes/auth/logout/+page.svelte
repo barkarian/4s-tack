@@ -10,7 +10,5 @@
 	});
 </script>
 
-<p>
-	Cookies,Local Storage and stores are clear...Go to /auth/logout and tell it where it should
-	redirect after here
-</p>
+<p>Cookies,Local Storage and stores are clear..</p>
+<p>Modify from: /auth/logout</p>
