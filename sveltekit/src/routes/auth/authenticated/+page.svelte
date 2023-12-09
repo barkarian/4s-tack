@@ -14,7 +14,9 @@
 	});
 </script>
 
+<p>-jwt cookie has been set.</p>
+<p>-userStoreData and its corresponding localStorage has been set</p>
 <p>
-	The UserStore value has just be set to the value:{JSON.stringify($userStore)}
+	userStoreData:{JSON.stringify($userStore)}
 </p>
 <p>Modify UserStore object and other from: /auth/authenticated/+page.server.ts</p>
