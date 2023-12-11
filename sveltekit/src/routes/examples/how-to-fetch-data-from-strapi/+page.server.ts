@@ -1,21 +1,29 @@
+import { strapiApi } from "$lib/components/strapi/StrapiConfig";
+import type { AxiosResponse } from "axios";
 import type { StrapiFlattenEntity, StrapiNestedEntity } from "../../../lib/server/interfaces/strapi/utils/types";
+import type { PageServerLoad } from "./$types";
 //STRAPI FETCH FUNCTION EXAMPLE
-async function fetchStrapiFlattenEntityExample() {
-    const res = await fetch("http://localhost:1337/api/users-with-flat-response")
-    const flattenData = await res.json() as StrapiFlattenEntity<"plugin::users-permissions.user">
-    //Example of how the data is structured on a flat response
-    //Not defaults you have to create those endpoints ⏳
-    //Simpler to use,very good for nested data ✅
-    flattenData.role?.users?.every(e => e.email);
-    return flattenData;
+async function fetchCustomStrapiEndpoint() {
+    const res: AxiosResponse<{ data: StrapiFlattenEntity<"api::example-product.example-product">[], meta: any }, any> = await strapiApi.axios(`example-products?populate=*`)
+    const responseBody = res.data;
+    return responseBody;
 }
 
-async function fetchStrapiNestedntityExample() {
-    const res = await fetch("http://localhost:1337/api/users-with-nested-response")
-    const nestedData = await res.json() as StrapiNestedEntity<"plugin::users-permissions.user">
-    //Example of how the data is structured on a Nested response
-    //The default strapi CRUD response 💨
-    //For nested data ComplexEntity are NOT ideals ❌
-    nestedData.attributes.role;
-    return nestedData
+async function findExampleProductsExample() {
+    const res = await strapiApi.find<StrapiFlattenEntity<"api::example-product.example-product">[]>("example-products", {
+        populate: ["variations", "images"]
+    })
+    //Contains strapi res body:
+    //res.data
+    //res.meta
+    return res;
 }
+
+export const load: PageServerLoad = async () => {
+    const strapiRes = await findExampleProductsExample()
+    const strapiCustomEndpoint = await fetchCustomStrapiEndpoint()
+    return {
+        strapiRes,
+        strapiCustomEndpoint
+    };
+};

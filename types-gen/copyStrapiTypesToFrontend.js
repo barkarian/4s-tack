@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const sourcePath = path.join(__dirname, '../strapi/types/generated/contentTypes.d.ts');
-const destinationPath = path.join(__dirname, '../sveltekit/src/lib/server/interfaces/strapi/utils/generated/contentTypes.d.ts');
+const destinationPath = path.join(__dirname, '../sveltekit/src/lib/server/interfaces/strapi/contentTypes.d.ts');
 const destinationDir = path.dirname(destinationPath);
 
 // Check if source file exists
