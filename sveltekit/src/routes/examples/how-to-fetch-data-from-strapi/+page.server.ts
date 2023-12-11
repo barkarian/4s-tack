@@ -11,7 +11,7 @@ async function fetchCustomStrapiEndpoint() {
 
 async function findExampleProductsExample() {
     const res = await strapiApi.find<StrapiFlattenEntity<"api::example-product.example-product">[]>("example-products", {
-        populate: ["variations", "images"]
+        populate: ["variations", "images"],
     })
     //Contains strapi res body:
     //res.data

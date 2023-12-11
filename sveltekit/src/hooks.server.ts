@@ -1,3 +1,4 @@
+import { strapiApi } from '$lib/components/strapi/StrapiConfig';
 import { getServerSideUserFromJwt } from './routes/auth/(components)/AuthUtils.server';
 import { redirect, type Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
@@ -6,6 +7,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 const setLocals: Handle = async ({ event, resolve }) => {
     // console.log({ msg: "HOOK:inside setLocals Element" })
     const jwt = event.cookies.get('jwt');
+    strapiApi.setToken(jwt ?? "");
     //Get User Infos
     event.locals.userInfo = await getServerSideUserFromJwt(jwt)
     if (jwt && !event.locals.userInfo) {
