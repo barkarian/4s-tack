@@ -85,25 +85,13 @@ export type GetValue<TAttribute extends Attribute.Attribute> = Utils.Expression.
     unknown
 >;
 
-export type StrapiFlattenEntity<TContentTypeUID extends Common.UID.ContentType> =
+export type StrapiEntity<TContentTypeUID extends Common.UID.ContentType> =
     GetValues<
         TContentTypeUID,
         GetNonPopulatableKeys<TContentTypeUID>,
         GetPopulatableKeys<TContentTypeUID>
     >
 
-
-export interface StrapiNestedEntity<TContentTypeUID extends Common.UID.ContentType> {
-    attributes: GetValuesNested<
-        TContentTypeUID
-    >,
-    id?: number
-}
-
-export interface CollectionTypeResponse<TContentTypeUID extends Common.UID.ContentType> {
-    data: [StrapiNestedEntity<TContentTypeUID>]
-    meta: any
-}
 
 // TEST
 // declare function fetch<T extends Common.UID.ContentType>(uid: T): Promise<Response<T>>;
