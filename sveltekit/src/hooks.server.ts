@@ -19,7 +19,11 @@ const setLocals: Handle = async ({ event, resolve }) => {
 }
 
 const userAuth: Handle = async ({ event, resolve }) => {
-
+    if (!event.locals.userInfo) {
+        if (event.url.pathname.startsWith("/examples/assistant")) {
+            throw redirect(302, "/")
+        }
+    }
     console.log({ msg: "HOOK:inside userAuth Sequence Element", pathname: event.url.pathname, locals: event.locals })
     return resolve(event)
 }
