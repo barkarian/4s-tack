@@ -41,7 +41,13 @@
 				on:click={() => {
 					goto('/examples/chat');
 				}}>chat-example</DropdownMenu.Item
-			><DropdownMenu.Item
+			>
+			<DropdownMenu.Item
+				on:click={() => {
+					goto('/examples/assistant');
+				}}>Assistant</DropdownMenu.Item
+			>
+			<DropdownMenu.Item
 				on:click={() => {
 					goto('/examples/auth/sign-in');
 				}}>Example auth</DropdownMenu.Item
