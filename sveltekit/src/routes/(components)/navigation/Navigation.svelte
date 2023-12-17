@@ -2,7 +2,7 @@
 	import UserNav from './UserNav.svelte';
 	import ToggleMode from './ToggleMode.svelte';
 	import { PUBLIC_PWA_NAVBAR_VH, PUBLIC_STRAPI_URL } from '$env/static/public';
-	import DropDownNavBar from './HamburgerNav.svelte';
+	import DropdownNav from './DropdownNav.svelte';
 	import { userStore } from '$lib/stores';
 	import { LogIn } from 'lucide-svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
@@ -20,7 +20,7 @@
 		{/if}
 		<div class="ml-auto flex items-center space-x-4">
 			<ToggleMode></ToggleMode>
-			<DropDownNavBar />
+			<DropdownNav />
 		</div>
 	</div>
 </div>

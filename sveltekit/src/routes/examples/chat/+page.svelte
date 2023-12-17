@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ChatHeader from '$lib/components/ui-custom/chat/ChatHeader.svelte';
-	import ChatMessage from '$lib/components/ui-custom/chat/ChatMessage.svelte';
-	import ChatPrompt from '$lib/components/ui-custom/chat/ChatPrompt.svelte';
+	import ChatHeader from './(components)/chat/ChatHeader.svelte';
+	import ChatMessage from './(components)/chat/ChatMessage.svelte';
+	import ChatPrompt from './(components)/chat/ChatPrompt.svelte';
 	import type { PageData } from './$types';
 	let chatContainer: HTMLElement | undefined;
 

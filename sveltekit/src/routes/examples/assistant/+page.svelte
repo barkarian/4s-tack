@@ -1,11 +1,6 @@
 <script lang="ts">
-	import AssistantChatHeader from '$lib/components/ui-custom/assistant-chat/AssistantChatHeader.svelte';
-	import AssistantChatMessage from '$lib/components/ui-custom/assistant-chat/AssistantChatMessage.svelte';
-	import AssistantChatPrompt from '$lib/components/ui-custom/assistant-chat/AssistantChatPrompt.svelte';
-
-	import ChatHeader from '$lib/components/ui-custom/chat/ChatHeader.svelte';
-	import ChatMessage from '$lib/components/ui-custom/chat/ChatMessage.svelte';
-	import ChatPrompt from '$lib/components/ui-custom/chat/ChatPrompt.svelte';
+	import AssistantChatHeader from './(components)/assistant-chat/AssistantChatHeader.svelte';
+	import AssistantChatMessage from './(components)/assistant-chat/AssistantChatMessage.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import type { PageData } from './$types';
@@ -19,7 +14,7 @@
 	export let data: PageData;
 
 	//Here you can hanle what happens when you receive a new message
-	async function sendMessage() {
+	async function scrollToBottom() {
 		if (chatContainer) {
 			chatContainer.scrollTop = chatContainer.scrollHeight;
 		}
@@ -37,10 +32,8 @@
 		{/each}
 	</div>
 	<!-- Chat Prompt -->
-	<div class="flex justify-between items-center p-4 border-t">
-		<form on:submit={handleSubmit}>
-			<Input bind:value={$input} placeholder="Type a message..." class="flex-1 mr-2" />
-			<Button type="submit">Send</Button>
-		</form>
-	</div>
+	<form class="flex justify-between items-center p-4 border-t" on:submit={handleSubmit}>
+		<Input bind:value={$input} placeholder="Type a message..." class="flex-1 mr-2" />
+		<Button type="submit" on:click={() => scrollToBottom()}>Send</Button>
+	</form>
 </div>

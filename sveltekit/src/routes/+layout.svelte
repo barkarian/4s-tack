@@ -5,6 +5,7 @@
 	import { PUBLIC_PWA_BODY_VH } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { userStore } from '$lib/stores';
+	let isMounted = false;
 	//ON HOT REFRESHES
 	onMount(() => {
 		// Check if localStorage is available and userStoreData exists
@@ -16,13 +17,16 @@
 				$userStore = JSON.parse(storedData);
 			}
 		}
+		isMounted = true;
 	});
 </script>
 
 <div class="flex flex-col min-h-screen">
-	<Navigation />
-	<div style={PUBLIC_PWA_BODY_VH}>
-		<slot />
-	</div>
-	<Footer></Footer>
+	{#if isMounted}
+		<Navigation />
+		<div style={PUBLIC_PWA_BODY_VH}>
+			<slot />
+		</div>
+		<Footer></Footer>
+	{/if}
 </div>

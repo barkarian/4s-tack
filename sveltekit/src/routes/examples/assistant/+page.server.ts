@@ -1,4 +1,4 @@
-import type { ChatConfigType } from "$lib/components/ui-custom/chat/Chat";
+import type { ChatConfigType } from "../chat/(components)/chat/Chat";
 import type { PageServerLoad } from "./$types";
 let chatConfig: ChatConfigType = {
     currentUser: {

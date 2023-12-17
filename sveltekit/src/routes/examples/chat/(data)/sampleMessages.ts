@@ -1,4 +1,4 @@
-import type { ChatMessageType } from "$lib/components/ui-custom/chat/Chat";
+import type { ChatMessageType } from "../(components)/chat/Chat";
 
 const aliceUserId = "user-001"; // Sample user ID for Alice
 const bobUserId = "user-002";   // Sample user ID for Bob
