@@ -1,5 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const sourcePath = path.join(__dirname, '../strapi/types/generated/contentTypes.d.ts');
 const destinationPath = path.join(__dirname, '../sveltekit/src/lib/server/interfaces/strapi/contentTypes.d.ts');

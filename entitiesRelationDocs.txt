@@ -1,0 +1,37 @@
+type StrapiEntity<T> = T extends "api::variation.variation" 
+             ? {
+                 id: number;
+                 variationName: string;
+                 variationValue: string;
+                 products: StrapiEntity<"api::example-product.example-product">[];
+               }
+             : T extends "api::example-product.example-product" 
+             ? {
+                 id: number;
+                 name: string;
+                 description: string;
+                 images: {
+                   id: number;
+                   url: string;
+                   formats: {
+                     thumbnail?: {
+                       url: string;
+                     };
+                     small?: {
+                       url: string;
+                     };
+                     medium?: {
+                       url: string;
+                     };
+                     large?: {
+                       url: string;
+                     };
+                   };
+                   previewUrl: string;
+                   provider: string;
+                   createdAt: string;
+                   updatedAt: string;
+                 }[];
+                 variations: StrapiEntity<"api::variation.variation">[];
+               }
+             : never;
