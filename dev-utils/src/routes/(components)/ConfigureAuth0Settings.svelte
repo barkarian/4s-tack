@@ -2,6 +2,7 @@
 	import type { PageData } from '../$types';
 	import * as Select from '$lib/components/ui/select';
 	import { Button } from '$lib/components/ui/button';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 	const { auth0CallbackUrlToSet, auth0SettingsUrl } = data;
@@ -49,7 +50,9 @@
 						>Auth0 Settings</Button
 					>
 				</div>
-				<Button size="lg" variant="outline">I updated everything let's continue !</Button>
+				<Button size="lg" variant="outline" on:click={() => goto('/types-generation')}
+					>I updated everything let's continue !</Button
+				>
 			</div>
 		</div>
 	</div>

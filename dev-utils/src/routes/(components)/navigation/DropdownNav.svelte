@@ -30,27 +30,13 @@
 			<DropdownMenu.Separator />
 			<DropdownMenu.Item
 				on:click={() => {
-					goto('/examples/easepick');
-				}}>ease-pick</DropdownMenu.Item
+					goto('/types-generations');
+				}}>Generate types Everywhere!</DropdownMenu.Item
 			>
 			<DropdownMenu.Item
 				on:click={() => {
 					goto('/examples/form');
-				}}>form-example</DropdownMenu.Item
-			><DropdownMenu.Item
-				on:click={() => {
-					goto('/examples/chat');
-				}}>chat-example</DropdownMenu.Item
-			>
-			<DropdownMenu.Item
-				on:click={() => {
-					goto('/examples/assistant');
 				}}>Assistant</DropdownMenu.Item
-			>
-			<DropdownMenu.Item
-				on:click={() => {
-					goto('/examples/auth/sign-in');
-				}}>Example auth</DropdownMenu.Item
 			>
 		</DropdownMenu.Group>
 	</DropdownMenu.Content>
