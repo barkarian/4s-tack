@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import type { PageData } from './$types';
+	import ConfigureAuth0Settings from './(components)/ConfigureAuth0Settings.svelte';
+	import InitialAuthenticationSetup from './(components)/InitialAuthenticationSetup.svelte';
+	export let data: PageData;
+	const { auth0CallbackUrlToSet, auth0SettingsUrl } = data;
+</script>
+
+<div class="flex h-full">
+	{#if auth0CallbackUrlToSet}
+		<ConfigureAuth0Settings {data}></ConfigureAuth0Settings>
+	{:else}
+		<InitialAuthenticationSetup></InitialAuthenticationSetup>
+	{/if}
+</div>

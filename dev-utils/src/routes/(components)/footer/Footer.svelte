@@ -3,7 +3,7 @@
 	import { Github } from 'lucide-svelte';
 </script>
 
-<footer class="flex items-center justify-center p-5" style={PUBLIC_PWA_FOORER_VH}>
+<footer class="flex items-center justify-center p-5">
 	<p>The footer</p>
 	<a
 		href="https://github.com/barkarian/4s-tack"
