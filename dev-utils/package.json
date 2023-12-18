@@ -46,6 +46,7 @@
 		"lucide-svelte": "^0.298.0",
 		"mode-watcher": "^0.1.2",
 		"ngrok": "^5.0.0-beta.2",
+		"openai": "^4.23.0",
 		"tailwind-merge": "^2.1.0",
 		"tailwind-variants": "^0.1.19"
 	}

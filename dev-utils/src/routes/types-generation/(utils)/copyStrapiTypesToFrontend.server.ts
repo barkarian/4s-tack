@@ -2,7 +2,7 @@ import { rootDirectory } from '$lib/utils/Paths';
 import fs from 'fs';
 import path from 'path';
 
-export const copyStrapiTypesToFrontend = (): string => {
+export const copyStrapiTypesToFrontend = (): "ok" | "not ok" => {
     const sourcePath = path.join(rootDirectory, './strapi/types/generated/contentTypes.d.ts');
     const destinationPath = path.join(rootDirectory, './sveltekit/src/lib/server/interfaces/strapi/contentTypes.d.ts');
     const destinationDir = path.dirname(destinationPath);
@@ -23,6 +23,7 @@ export const copyStrapiTypesToFrontend = (): string => {
     const modifiedContent: string = content.replace('@strapi/strapi', '@strapi/types');
 
     try {
+        console.log({ destinationPath, modifiedContent })
         fs.writeFileSync(destinationPath, modifiedContent);
         console.log('File copied and modified successfully!');
         return 'ok';
