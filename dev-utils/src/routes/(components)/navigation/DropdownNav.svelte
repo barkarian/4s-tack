@@ -35,8 +35,13 @@
 			>
 			<DropdownMenu.Item
 				on:click={() => {
-					goto('/assistant');
-				}}>Assistant</DropdownMenu.Item
+					goto('/sveltekit-assistant');
+				}}>Sveltekit Assistant</DropdownMenu.Item
+			>
+			<DropdownMenu.Item
+				on:click={() => {
+					goto('/strapi-assistant');
+				}}>Strapi Assistant</DropdownMenu.Item
 			>
 		</DropdownMenu.Group>
 	</DropdownMenu.Content>

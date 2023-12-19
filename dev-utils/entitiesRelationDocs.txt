@@ -10,10 +10,89 @@ type StrapiEntity<T> = T extends "api::variation.variation"
       id: number;
       name: string;
       description: string;
-      images: {
-        id: number;
-        url: string;
-      }[];
+      images: Media[];
       variations: StrapiEntity<"api::variation.variation">[];
     }
   : never;
+
+type Media = {
+  url: string;
+  alternativeText?: string;
+  caption?: string;
+};
+
+const exampleProductEntity: StrapiEntity<"api::example-product.example-product"> = {
+  id: 1,
+  name: "Example Product",
+  description: "This is an example product",
+  images: [
+    {
+      url: "https://example.com/image1.jpg",
+      alternativeText: "Image 1",
+      caption: "This is the first image"
+    },
+    {
+      url: "https://example.com/image2.jpg",
+      alternativeText: "Image 2",
+      caption: "This is the second image"
+    }
+  ],
+  variations: [
+    {
+      id: 1,
+      variationName: "Size",
+      variationValue: "Small",
+      products: []
+    },
+    {
+      id: 2,
+      variationName: "Size",
+      variationValue: "Medium",
+      products: []
+    }
+  ]
+};
+
+const variationEntity: StrapiEntity<"api::variation.variation"> = {
+  id: 1,
+  variationName: "Size",
+  variationValue: "Small",
+  products: [
+    {
+      id: 1,
+      name: "Example Product",
+      description: "This is an example product",
+      images: [
+        {
+          url: "https://example.com/image1.jpg",
+          alternativeText: "Image 1",
+          caption: "This is the first image"
+        },
+        {
+          url: "https://example.com/image2.jpg",
+          alternativeText: "Image 2",
+          caption: "This is the second image"
+        }
+      ],
+      variations: []
+    },
+    {
+      id: 2,
+      name: "Example Product 2",
+      description: "This is another example product",
+      images: [
+        {
+          url: "https://example.com/image3.jpg",
+          alternativeText: "Image 3",
+          caption: "This is the third image"
+        },
+        {
+          url: "https://example.com/image4.jpg",
+          alternativeText: "Image 4",
+          caption: "This is the fourth image"
+        }
+      ],
+      variations: []
+    }
+  ]
+};

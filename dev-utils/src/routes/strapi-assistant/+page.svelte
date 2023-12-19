@@ -9,7 +9,7 @@
 	import { useChat } from 'ai/svelte';
 	import { onMount } from 'svelte';
 	const { messages, handleSubmit, input } = useChat({
-		api: '/assistant/api/chat'
+		api: '/strapi-assistant/api/chat'
 	});
 	//LOAD currentUser,chatInfos and messages from the API
 	export let data: PageData;
@@ -38,7 +38,7 @@
 	}
 </script>
 
-<div class="flex h-full flex-col">
+<!-- <div class="flex h-full flex-col">
 	<AssistantChatHeader
 		chatName={'Assistant'}
 		avatar={'https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg'}
@@ -48,9 +48,10 @@
 			<AssistantChatMessage {message} />
 		{/each}
 	</div>
-	<!-- Chat Prompt -->
 	<form class="flex items-center justify-between border-t p-4" on:submit={handleSubmit}>
 		<Input bind:value={$input} placeholder="Type a message..." class="mr-2 flex-1" />
 		<Button type="submit" on:click={() => scrollToBottom()}>Send</Button>
 	</form>
-</div>
+</div> -->
+
+TODO
