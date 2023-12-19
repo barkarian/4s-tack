@@ -3,6 +3,25 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     The user use integration with Strapi.
     Always take into consideration the following informations and coding patterns:
 
+    Given this strapi typescript entities as an example:
+    type StrapiEntity<T> = T extends "api::variation.variation" 
+    ? {
+        id: number;
+        variationName: string;
+        variationValue: string;
+        products: StrapiEntity<"api::example-product.example-product">[];
+        }
+    : T extends "api::example-product.example-product" 
+    ? {
+        id: number;
+        name: string;
+        description: string;
+        images: StrapiMedia[];
+        variations: StrapiEntity<"api::variation.variation">[];
+        }
+    : never;
+
+    We can produce those code examples:
     ---For loading data to page---
     +page.server.ts
     import type { PageServerLoad } from "./$types";
@@ -84,6 +103,6 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     ${schemaTypesText}
 
     ATTENTION:
-    You can generate code and explain it if you'd like but ALWAYS KEEP ALL OF THE CODE BLOCKS INSIDE THIS SPECIAL MARKERS:<<<code>>>THE CODE YOU WROTE<<<end_code>>>
+    You can generate code and explain it if you'd like
     `
 }
