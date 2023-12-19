@@ -30,7 +30,7 @@
 			<DropdownMenu.Separator />
 			<DropdownMenu.Item
 				on:click={() => {
-					goto('/types-generations');
+					goto('/types-generation');
 				}}>Generate types Everywhere!</DropdownMenu.Item
 			>
 			<DropdownMenu.Item

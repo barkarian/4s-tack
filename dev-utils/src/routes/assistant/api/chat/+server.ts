@@ -13,6 +13,10 @@ const openai = new OpenAIApi(config)
 
 export const POST: RequestHandler = async ({ request }) => {
     const { messages } = await request.json();
+    messages[messages.length - 1].content = messages[messages.length - 1].content
+    // + "(the code blocks should be contained inside those SPECIAL MARKERS:<<<code>>>THE CODE YOU WROTE<<<end_code>>>)"
+    console.log({ messages })
+
     const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         stream: true,
@@ -20,18 +24,7 @@ export const POST: RequestHandler = async ({ request }) => {
     })
     const stream = OpenAIStream(response, {
         onCompletion: async (completion: string) => {
-            //Get entities relation docs
-            const entitiesRelationDocsPath = `${rootDirectory}/dev-utils/entitiesRelationDocs.txt`;
-            let schemaTypesText = fs.readFileSync(entitiesRelationDocsPath, 'utf8')
-            console.log({ schemaTypesText })
-            //Get user info type
-            const userInfoTypePath = `${rootDirectory}/sveltekit/src/app.d.ts`;
-            const appDtsCodeToText = fs.readFileSync(userInfoTypePath, 'utf8')
-            //Find and get type UserInfo as a text from app.d.ts
-            const userInfoTypeText = appDtsCodeToText.match(/type UserInfo = {([\s\S]*?)}/)![0]
-            console.log({ userInfoTypeText })
-            const systemContent = getAiSystemContextSveltekitGeneration(userInfoTypeText, schemaTypesText)
-            console.log({ systemContent })
+            console.log({ completion })
         }
     });
     return new StreamingTextResponse(stream);

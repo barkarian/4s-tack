@@ -7,11 +7,28 @@
 	let chatContainer: HTMLElement | undefined;
 
 	import { useChat } from 'ai/svelte';
+	import { onMount } from 'svelte';
 	const { messages, handleSubmit, input } = useChat({
 		api: '/assistant/api/chat'
 	});
 	//LOAD currentUser,chatInfos and messages from the API
 	export let data: PageData;
+	const { sveltekitSystemContent } = data;
+	if ($messages.length === 0) {
+		$messages.push(
+			{
+				id: '1',
+				role: 'system',
+				content: sveltekitSystemContent
+			},
+			{
+				id: '2',
+				role: 'assistant',
+				content: 'Hello, I am you assistant and I have context of your project. How can I help you?'
+			}
+		);
+		console.log({ initialMessages: $messages });
+	}
 
 	//Here you can hanle what happens when you receive a new message
 	async function scrollToBottom() {

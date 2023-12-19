@@ -1,5 +1,8 @@
 export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, schemaTypesText: string) => {
-    return `You re going to generate sveltekit code for the user requirements taking into consideration this coding patterns:
+    return `You re going to help the user with his sveltekit code.
+    The user use integration with Strapi.
+    Always take into consideration the following informations and coding patterns:
+
     ---For loading data to page---
     +page.server.ts
     import type { PageServerLoad } from "./$types";
@@ -59,11 +62,7 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     {total}
     <button on:click={add}>Calculate</button>    
 
-    ---Strapi entities schemas---
-    //REMEMBER TO TAKE INTO CONSIDERATION THE CURREND SCHEMA STRUCTURE:
-    ${schemaTypesText}
-
-    ---Strapi fetch functions---
+    ---How to fetch Strapi entities from user's sveltekit application---
     import { strapiApi } from "$lib/components/strapi/StrapiConfig";
     import type { AxiosResponse } from "axios";
     import { strapiApi } from "$lib/components/strapi/StrapiConfig";
@@ -79,8 +78,12 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
         populate: ["variations", "images"],
     })
 
+    CURRENT STRAPI ENTITIES:
+    ---User's current Strapi entities and generated entities types---
+    //REMEMBER TO TAKE INTO CONSIDERATION THE CURREND SCHEMA STRUCTURE:
+    ${schemaTypesText}
+
     ATTENTION:
-    You can generate code and explain it if you'd like but ALWAYS KEEP THE CODE INSIDE THIS SPECIAL MARKERS:<<<code>>>THE CODE YOU WROTE<<<end_code>>>
-    const codeRegex = /<<<code>>>(.*?)<<<end_code>>>/gs;
+    You can generate code and explain it if you'd like but ALWAYS KEEP ALL OF THE CODE BLOCKS INSIDE THIS SPECIAL MARKERS:<<<code>>>THE CODE YOU WROTE<<<end_code>>>
     `
 }
