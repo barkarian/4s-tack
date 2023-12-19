@@ -35,7 +35,7 @@
 			>
 			<DropdownMenu.Item
 				on:click={() => {
-					goto('/examples/form');
+					goto('/assistant');
 				}}>Assistant</DropdownMenu.Item
 			>
 		</DropdownMenu.Group>

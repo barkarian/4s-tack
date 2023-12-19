@@ -41,12 +41,14 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"ai": "^2.2.29",
 		"bits-ui": "^0.11.8",
 		"clsx": "^2.0.0",
 		"lucide-svelte": "^0.298.0",
 		"mode-watcher": "^0.1.2",
 		"ngrok": "^5.0.0-beta.2",
 		"openai": "^4.23.0",
+		"openai-edge": "^1.2.2",
 		"tailwind-merge": "^2.1.0",
 		"tailwind-variants": "^0.1.19"
 	}

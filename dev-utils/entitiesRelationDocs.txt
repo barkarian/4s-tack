@@ -1,11 +1,12 @@
-type StrapiEntity<T> = T extends "api::variation.variation" 
+```typescript
+type StrapiEntity<T> = T extends "api::variation.variation"
   ? {
       id: number;
       variationName: string;
       variationValue: string;
       products: StrapiEntity<"api::example-product.example-product">[];
     }
-  : T extends "api::example-product.example-product" 
+  : T extends "api::example-product.example-product"
   ? {
       id: number;
       name: string;
@@ -14,21 +15,34 @@ type StrapiEntity<T> = T extends "api::variation.variation"
       variations: StrapiEntity<"api::variation.variation">[];
     }
   : never;
-  
+
 type StrapiMedia = {
   id: number;
   url: string;
-  formats: {
-    [key: string]: {
-      url: string;
-    };
-  };
   alternativeText: string;
   caption: string;
   width: number;
   height: number;
+  formats: {
+    thumbnail: StrapiMediaFormat;
+    small: StrapiMediaFormat;
+    medium: StrapiMediaFormat;
+    large: StrapiMediaFormat;
+  };
 };
 
-type StrapiEntities = 
-  | StrapiEntity<"api::example-product.example-product">
-  | StrapiEntity<"api::variation.variation">;
+type StrapiMediaFormat = {
+  url: string;
+  ext: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: string | null;
+  size: number;
+  width: number;
+  height: number;
+};
+
+type ExampleProduct = StrapiEntity<"api::example-product.example-product">;
+type Variation = StrapiEntity<"api::variation.variation">;
+```
