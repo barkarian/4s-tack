@@ -1,23 +1,24 @@
 type StrapiEntity<T> = T extends "api::variation.variation" 
-  ? {
-      id: number;
-      variationName: string;
-      variationValue: string;
-      products: StrapiEntity<"api::example-product.example-product">[];
-    }
-  : T extends "api::example-product.example-product" 
-  ? {
-      id: number;
-      name: string;
-      description: string;
-      images: StrapiMedia[];
-      variations: StrapiEntity<"api::variation.variation">[];
-    }
-  : never;
+? {
+    id: number;
+    variationName: string;
+    variationValue: string;
+    products: StrapiEntity<"api::example-product.example-product">[];
+  }
+: T extends "api::example-product.example-product" 
+? {
+    id: number;
+    name: string;
+    description: string;
+    images: Media[];
+    variations: StrapiEntity<"api::variation.variation">[];
+  }
+: never;
 
-type StrapiMedia = {
+type Media = {
   id: number;
   url: string;
+  name: string;
   alternativeText: string;
   caption: string;
   width: number;
@@ -25,20 +26,35 @@ type StrapiMedia = {
   formats: {
     thumbnail: {
       url: string;
+      name: string;
+      alternativeText: string;
+      caption: string;
+      width: number;
+      height: number;
+    };
+    large: {
+      url: string;
+      name: string;
+      alternativeText: string;
+      caption: string;
+      width: number;
+      height: number;
+    };
+    medium: {
+      url: string;
+      name: string;
+      alternativeText: string;
+      caption: string;
+      width: number;
+      height: number;
+    };
+    small: {
+      url: string;
+      name: string;
+      alternativeText: string;
+      caption: string;
       width: number;
       height: number;
     };
   };
-  hash: string;
-  ext: string;
-  mime: string;
-  size: number;
-  previewUrl: null;
-  provider: string;
-  provider_metadata: null;
-  created_at: string;
-  updated_at: string;
 };
-
-type ExampleProduct = StrapiEntity<"api::example-product.example-product">;
-type Variation = StrapiEntity<"api::variation.variation">;

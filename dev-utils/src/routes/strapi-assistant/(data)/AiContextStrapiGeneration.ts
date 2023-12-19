@@ -88,7 +88,8 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     
         const deleteResponse = await strapi.entityService.delete("api::example-product.example-product", 1);
     }
-    //REMEMBER TO TAKE INTO CONSIDERATION THE CURREND SCHEMA STRUCTURE:
+
+    //REMEMBER TO TAKE INTO CONSIDERATION THE CURREND ENTITIES SCHEMA STRUCTURE IS:
     ${schemaTypesText}
 
     ATTENTION:

@@ -38,7 +38,7 @@
 	}
 </script>
 
-<!-- <div class="flex h-full flex-col">
+<div class="flex h-full flex-col">
 	<AssistantChatHeader
 		chatName={'Assistant'}
 		avatar={'https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg'}
@@ -52,6 +52,4 @@
 		<Input bind:value={$input} placeholder="Type a message..." class="mr-2 flex-1" />
 		<Button type="submit" on:click={() => scrollToBottom()}>Send</Button>
 	</form>
-</div> -->
-
-TODO
+</div>
