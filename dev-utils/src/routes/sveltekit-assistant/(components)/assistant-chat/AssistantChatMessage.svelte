@@ -4,6 +4,8 @@
 	import type { Message } from 'ai';
 	import Markdown from '$lib/components/custom-ui/Markdown.svelte';
 	export let message: Message;
+	//Import sveltekitAssistant avatar
+	import SveltekitAssistantAvatar from '../../(data)/sveltekitAssistant.png';
 </script>
 
 <div class={`flex ${message.role === 'user' ? 'flex-row-reverse' : ''} mb-4 items-end`}>
@@ -11,11 +13,7 @@
 		<div class="flex items-end">
 			<div class="relative mr-2">
 				<Avatar.Root class="h-10 w-10">
-					<Avatar.Image
-						src={'https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg'}
-						alt={`@${message.role}`}
-						class="h-12 w-12"
-					/>
+					<Avatar.Image src={SveltekitAssistantAvatar} alt={`@${message.role}`} class="h-12 w-12" />
 					<Avatar.Fallback>{message.role.slice(0, 2).toLocaleUpperCase()}</Avatar.Fallback>
 				</Avatar.Root>
 			</div>

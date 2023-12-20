@@ -36,13 +36,13 @@
 			chatContainer.scrollTop = chatContainer.scrollHeight;
 		}
 	}
+
+	//Import sveltekitAssistant avatar
+	import StrapiAssistant from './(data)/strapiAssistant.png';
 </script>
 
 <div class="flex h-full flex-col">
-	<AssistantChatHeader
-		chatName={'Assistant'}
-		avatar={'https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg'}
-	/>
+	<AssistantChatHeader chatName={'Strapi Assistant'} avatar={StrapiAssistant} />
 	<div bind:this={chatContainer} class="flex flex-1 flex-col-reverse overflow-y-auto p-4">
 		{#each [...$messages].reverse() as message}
 			<AssistantChatMessage {message} />
