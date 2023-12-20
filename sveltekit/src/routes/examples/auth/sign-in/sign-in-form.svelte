@@ -7,7 +7,7 @@
 	import { Loader2 } from 'lucide-svelte';
 	import { formSchema, type FormSchema } from './schema';
 	import type { SuperValidated } from 'sveltekit-superforms';
-	import { strapiApi } from '$lib/components/strapi/StrapiConfig';
+	import { strapiApi } from '$lib/strapi/StrapiConfig';
 	import { goto } from '$app/navigation';
 
 	export let form: SuperValidated<FormSchema>;

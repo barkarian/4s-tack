@@ -3,6 +3,7 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     The user use integration with Strapi.
     Always take into consideration the following informations and coding patterns:
 
+    ------------
     Given this strapi typescript entities as an example:
     type StrapiEntity<T> = T extends "api::variation.variation" 
     ? {
@@ -25,6 +26,9 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     ---For loading data to page---
     +page.server.ts
     import type { PageServerLoad } from "./$types";
+    import type { StrapiEntity } from "$lib/strapi/StrapiTypes";
+    import { strapiApi } from "$lib/strapi/StrapiConfig";
+    
     //I give you UserInfo only for context awareness not include this in generated code
     ${userInfoTypeText}
 
@@ -82,9 +86,9 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     <button on:click={add}>Calculate</button>    
 
     ---How to fetch Strapi entities from user's sveltekit application---
-    import { strapiApi } from "$lib/components/strapi/StrapiConfig";
+    import { strapiApi } from "$lib/strapi/StrapiConfig";
+    import type { StrapiEntity } from "$lib/strapi/StrapiTypes";
     import type { AxiosResponse } from "axios";
-    import { strapiApi } from "$lib/components/strapi/StrapiConfig";
     //strapiApi can send axios request to custom strapi endpoints
     async function fetchCustomStrapiEndpoint() {
         const res: AxiosResponse<{ data: StrapiEntity<"api::example-product.example-product">[], meta: any }, any> = await strapiApi.axios("example-products?populate=*")
@@ -96,8 +100,11 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
     const resFind = await strapiApi.find<StrapiEntity<"api::example-product.example-product">[]>("example-products", {
         populate: ["variations", "images"],
     })
+    
+    ------------
 
-    CURRENT STRAPI ENTITIES:
+    The previous content was just to observe coding patterns
+    THE CURRENT STRAPI ENTITIES ARE:
     ---User's current Strapi entities and generated entities types---
     //REMEMBER TO TAKE INTO CONSIDERATION THE CURREND SCHEMA STRUCTURE:
     ${schemaTypesText}

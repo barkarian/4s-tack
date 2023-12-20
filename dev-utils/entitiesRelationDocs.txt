@@ -10,15 +10,14 @@ type StrapiEntity<T> = T extends "api::variation.variation"
     id: number;
     name: string;
     description: string;
-    images: Media[];
-    variations: StrapiEntity<"api::variation.variation">[];
+    images?: StrapiMedia[];
+    variations?: StrapiEntity<"api::variation.variation">[];
   }
 : never;
 
-type Media = {
+type StrapiMedia = {
   id: number;
   url: string;
-  name: string;
   alternativeText: string;
   caption: string;
   width: number;
@@ -26,35 +25,26 @@ type Media = {
   formats: {
     thumbnail: {
       url: string;
-      name: string;
-      alternativeText: string;
-      caption: string;
-      width: number;
-      height: number;
-    };
-    large: {
-      url: string;
-      name: string;
-      alternativeText: string;
-      caption: string;
-      width: number;
-      height: number;
-    };
-    medium: {
-      url: string;
-      name: string;
-      alternativeText: string;
-      caption: string;
       width: number;
       height: number;
     };
     small: {
       url: string;
-      name: string;
-      alternativeText: string;
-      caption: string;
+      width: number;
+      height: number;
+    };
+    medium: {
+      url: string;
+      width: number;
+      height: number;
+    };
+    large: {
+      url: string;
       width: number;
       height: number;
     };
   };
 };
+
+type ExampleProduct = StrapiEntity<"api::example-product.example-product">;
+type Variation = StrapiEntity<"api::variation.variation">;

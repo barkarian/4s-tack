@@ -1,4 +1,4 @@
-import { strapiApi } from '$lib/components/strapi/StrapiConfig';
+import { strapiApi } from '$lib/strapi/StrapiConfig';
 import { getServerSideUserFromJwt } from './routes/auth/(components)/AuthUtils.server';
 import { redirect, type Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';

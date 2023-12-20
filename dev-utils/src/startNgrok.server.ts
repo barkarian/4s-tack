@@ -17,18 +17,6 @@ function extractNgrokUrl(rawUrl: string): string {
     }
 }
 
-function readEnvVariable(envFile: string, envVariable: string): string | null {
-    const data = fs.readFileSync(envFile, 'utf8');
-    const lines = data.split('\n');
-
-    for (const line of lines) {
-        if (line.startsWith(envVariable + '=')) {
-            return line.split('=')[1].trim();
-        }
-    }
-    return null;
-}
-
 function updateEnvFile(envFile: string, envVariable: string, ngrokUrl: string): void {
     const data = fs.readFileSync(envFile, 'utf8');
     const lines = data.split('\n');

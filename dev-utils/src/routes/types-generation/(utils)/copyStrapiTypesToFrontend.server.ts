@@ -4,7 +4,7 @@ import path from 'path';
 
 export const copyStrapiTypesToFrontend = (): "ok" | "not ok" => {
     const sourcePath = path.join(rootDirectory, './strapi/types/generated/contentTypes.d.ts');
-    const destinationPath = path.join(rootDirectory, './sveltekit/src/lib/server/interfaces/strapi/contentTypes.d.ts');
+    const destinationPath = path.join(rootDirectory, './sveltekit/src/lib/strapi/generated-types/contentTypes.d.ts');
     const destinationDir = path.dirname(destinationPath);
 
     // Check if source file exists

@@ -1,7 +1,7 @@
-import { strapiApi } from "$lib/components/strapi/StrapiConfig";
+import { strapiApi } from "$lib/strapi/StrapiConfig";
 import type { AxiosResponse } from "axios";
-import type { StrapiEntity } from "$lib/server/interfaces/strapi/utils/types";
 import type { PageServerLoad } from "./$types";
+import type { StrapiEntity } from "$lib/strapi/StrapiTypes";
 //STRAPI FETCH FUNCTION EXAMPLE
 async function fetchCustomStrapiEndpoint() {
     const res: AxiosResponse<{ data: StrapiEntity<"api::example-product.example-product">[], meta: any }, any> = await strapiApi.axios(`example-products?populate=*`)

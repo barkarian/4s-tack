@@ -1,7 +1,7 @@
 import type { PageServerLoad, Actions } from "./$types";
 import { superValidate } from "sveltekit-superforms/server";
 import { formSchema } from "./schema";
-import { strapiApi } from "$lib/components/strapi/StrapiConfig";
+import { strapiApi } from "$lib/strapi/StrapiConfig";
 import { fail } from "@sveltejs/kit";
 
 export const load: PageServerLoad = () => {

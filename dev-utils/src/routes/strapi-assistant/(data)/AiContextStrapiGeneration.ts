@@ -89,7 +89,12 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
         const deleteResponse = await strapi.entityService.delete("api::example-product.example-product", 1);
     }
 
-    //REMEMBER TO TAKE INTO CONSIDERATION THE CURREND ENTITIES SCHEMA STRUCTURE IS:
+    ------------
+
+    The previous content was just to observe coding patterns
+    THE CURRENT STRAPI ENTITIES ARE:
+    ---User's current Strapi entities and generated entities types---
+    //REMEMBER TO TAKE INTO CONSIDERATION THE CURREND SCHEMA STRUCTURE:
     ${schemaTypesText}
 
     ATTENTION:
