@@ -23,7 +23,7 @@ export const getAiSystemContextSveltekitGeneration = (userInfoTypeText: string, 
 
     We can produce those code examples:
     ---CODE EXAMPLE FOR LIFECYCLES---
-    import { Event, StrapiEntity } from "../../../../../types/strapi/StrapiTypes"
+    import { Event, StrapiEntity } from "$root/types/StrapiTypes";
 
     //Example of how to use a lifecycle hook
     async function beforeUpdate(event: Event<"api::example-product.example-product">): Promise<void> {
