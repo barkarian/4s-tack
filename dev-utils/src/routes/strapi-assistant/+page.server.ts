@@ -1,7 +1,7 @@
 import { rootDirectory } from "$lib/utils/Paths";
 import type { PageServerLoad } from "./$types";
-import { getAiSystemContextSveltekitGeneration } from "./(data)/AiContextStrapiGeneration";
 import fs from 'fs';
+import { getAiSystemContextSveltekitGeneration } from "./(promptTemplates)/AiContextStrapiGeneration";
 
 
 export const load: PageServerLoad = () => {

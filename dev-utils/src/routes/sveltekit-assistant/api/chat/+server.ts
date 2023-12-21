@@ -2,7 +2,7 @@ import { OPENAI_KEY } from "$env/static/private";
 import type { RequestHandler } from "@sveltejs/kit";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Configuration, OpenAIApi } from "openai-edge";
-import { getAiSystemContextSveltekitGeneration } from "../../(data)/AiContextSveltekitGeneration";
+import { getAiSystemContextSveltekitGeneration } from "../../(promptTemplates)/AiContextSveltekitGeneration";
 import { rootDirectory } from "$lib/utils/Paths";
 import fs from 'fs';
 

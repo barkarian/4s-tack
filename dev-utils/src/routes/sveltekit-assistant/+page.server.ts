@@ -1,6 +1,6 @@
 import { rootDirectory } from "$lib/utils/Paths";
 import type { PageServerLoad } from "./$types";
-import { getAiSystemContextSveltekitGeneration } from "./(data)/AiContextSveltekitGeneration";
+import { getAiSystemContextSveltekitGeneration } from "./(promptTemplates)/AiContextSveltekitGeneration";
 import fs from 'fs';
 
 

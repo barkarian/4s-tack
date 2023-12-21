@@ -1,50 +1,34 @@
-type StrapiEntity<T> = T extends "api::variation.variation" 
-? {
-    id: number;
-    variationName: string;
-    variationValue: string;
-    products: StrapiEntity<"api::example-product.example-product">[];
-  }
-: T extends "api::example-product.example-product" 
-? {
-    id: number;
-    name: string;
-    description: string;
-    images?: StrapiMedia[];
-    variations?: StrapiEntity<"api::variation.variation">[];
-  }
-: never;
+type StrapiEntity<T> = T extends "api::variation.variation"
+  ? {
+      id: number;
+      variationName: string;
+      variationValue: string;
+      products: StrapiEntity<"api::example-product.example-product">[];
+    }
+  : T extends "api::example-product.example-product"
+  ? {
+      id: number;
+      name: string;
+      description: string;
+      images: StrapiMedia[];
+      variations: StrapiEntity<"api::variation.variation">[];
+    }
+  : never;
 
 type StrapiMedia = {
   id: number;
   url: string;
-  alternativeText: string;
-  caption: string;
-  width: number;
-  height: number;
-  formats: {
-    thumbnail: {
-      url: string;
-      width: number;
-      height: number;
-    };
-    small: {
-      url: string;
-      width: number;
-      height: number;
-    };
-    medium: {
-      url: string;
-      width: number;
-      height: number;
-    };
-    large: {
-      url: string;
-      width: number;
-      height: number;
-    };
-  };
+  ext: string;
+  mime: string;
+  size: number;
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: {
+    public_id: string;
+    resource_type: string;
+  } | null;
 };
 
-type ExampleProduct = StrapiEntity<"api::example-product.example-product">;
-type Variation = StrapiEntity<"api::variation.variation">;
+type Entity = StrapiEntity<
+  "api::example-product.example-product" | "api::variation.variation"
+>;

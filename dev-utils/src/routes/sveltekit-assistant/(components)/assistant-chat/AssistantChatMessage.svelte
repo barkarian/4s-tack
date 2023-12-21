@@ -5,7 +5,7 @@
 	import Markdown from '$lib/components/custom-ui/Markdown.svelte';
 	export let message: Message;
 	//Import sveltekitAssistant avatar
-	import SveltekitAssistantAvatar from '../../(data)/sveltekitAssistant.png';
+	import SveltekitAssistantAvatar from '../../sveltekitAssistant.png';
 </script>
 
 <div class={`flex ${message.role === 'user' ? 'flex-row-reverse' : ''} mb-4 items-end`}>

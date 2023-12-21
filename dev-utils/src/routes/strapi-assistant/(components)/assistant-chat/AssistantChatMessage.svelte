@@ -6,7 +6,7 @@
 	export let message: Message;
 
 	//Import sveltekitAssistant avatar
-	import StrapiAssistant from '../../(data)/strapiAssistant.png';
+	import StrapiAssistant from '../../strapiAssistant.png';
 </script>
 
 <div class={`flex ${message.role === 'user' ? 'flex-row-reverse' : ''} mb-4 items-end`}>

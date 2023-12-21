@@ -38,7 +38,7 @@
 	}
 
 	//Import sveltekitAssistant avatar
-	import StrapiAssistant from './(data)/strapiAssistant.png';
+	import StrapiAssistant from './strapiAssistant.png';
 </script>
 
 <div class="flex h-full flex-col">

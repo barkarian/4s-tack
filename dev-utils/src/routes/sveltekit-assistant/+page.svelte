@@ -38,7 +38,7 @@
 	}
 
 	//Import sveltekitAssistant avatar
-	import SveltekitAssistantAvatar from './(data)/sveltekitAssistant.png';
+	import SveltekitAssistantAvatar from './sveltekitAssistant.png';
 </script>
 
 <div class="flex h-full flex-col">
