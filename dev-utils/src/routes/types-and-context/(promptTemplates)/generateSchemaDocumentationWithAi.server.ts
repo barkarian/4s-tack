@@ -8,9 +8,7 @@ const openai = new OpenAI({
   apiKey: OPENAI_KEY, // defaults to process.env["OPENAI_API_KEY"]
 });
 
-export async function generateSchemaDocumentationWithAi(): Promise<void> {
-  const entitiesJsons: string = await fetchEntitiesJsons();
-  console.log({ entitiesJsons })
+export async function generateSchemaDocumentationWithAi(entitiesJsons: any): Promise<void> {
   const completion: any = await openai.chat.completions.create({
     messages: [
       {
@@ -90,33 +88,4 @@ export async function generateSchemaDocumentationWithAi(): Promise<void> {
   } else {
     console.log('No choices returned from the OpenAI API');
   }
-}
-
-async function fetchEntitiesJsons(): Promise<string> {
-  let entityDirectories: string[] = fs.readdirSync(`${rootDirectory}/strapi/src/api`);
-  entityDirectories = entityDirectories.filter((directory) => !directory.startsWith('.'));
-  const entitiesJsons: any[] = [];
-
-  //Get all api entities jsons
-  for (const entityDirectory of entityDirectories) {
-    const schemaPath: string = `${rootDirectory}/strapi/src/api/${entityDirectory}/content-types/${entityDirectory}/schema.json`;
-    const schemaJson: string = fs.readFileSync(schemaPath, 'utf8');
-    const parsedJson: any = JSON.parse(schemaJson);
-
-    entitiesJsons.push({
-      typeName: `api::${entityDirectory}.${entityDirectory}`,
-      parsedJson
-    });
-  }
-  //Get user entity json
-  const userSchemaPath: string = `${rootDirectory}/strapi/src/extensions/users-permissions/content-types/user/schema.json`;
-  const userSchemaJson: string = fs.readFileSync(userSchemaPath, 'utf8');
-  const parsedJson: any = JSON.parse(userSchemaJson);
-  entitiesJsons.push({
-    typeName: `plugin::users-permissions.permission`,
-    parsedJson
-  });
-  console.log({ entitiesJsons })
-  const entitiesJsonsText: string = entitiesJsons.map((json) => JSON.stringify(json)).join('\n');
-  return entitiesJsonsText;
 }

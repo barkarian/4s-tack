@@ -7,7 +7,7 @@ type StrapiEntity<T> = T extends "api::example-product.example-product"
       variations: StrapiEntity<"api::variation.variation">[];
       ownerOfTheProduct: StrapiEntity<"plugin::users-permissions.user">;
     }
-  : T extends "api::variation.variation" 
+  : T extends "api::variation.variation"
   ? {
       variationName: string;
       variationValue: string;
@@ -30,8 +30,8 @@ type StrapiEntity<T> = T extends "api::example-product.example-product"
 
 type Media = any;
 
-// Generated types
-type ExampleProductEntity = StrapiEntity<"api::example-product.example-product">;
-type VariationEntity = StrapiEntity<"api::variation.variation">;
-type UserEntity = StrapiEntity<"plugin::users-permissions.user">;
-type PermissionEntity = StrapiEntity<"plugin::users-permissions.permission">;
+type StrapiEntityTypes = StrapiEntity<
+  "api::example-product.example-product" |
+  "api::variation.variation" |
+  "plugin::users-permissions.permission"
+>;

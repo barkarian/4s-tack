@@ -2,7 +2,7 @@ import { rootDirectory } from '$lib/utils/Paths';
 import fs from 'fs';
 import path from 'path';
 
-export const copyStrapiTypesToFrontend = (): "ok" | "not ok" => {
+export const copyStrapiTypesToFrontend = () => {
     const sourcePath = path.join(rootDirectory, './strapi/types/generated/contentTypes.d.ts');
     const destinationPath = path.join(rootDirectory, './sveltekit/src/lib/strapi/generated-types/contentTypes.d.ts');
     const destinationDir = path.dirname(destinationPath);

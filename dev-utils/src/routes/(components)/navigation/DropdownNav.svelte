@@ -26,13 +26,8 @@
 	</DropdownMenu.Trigger>
 	<DropdownMenu.Content>
 		<DropdownMenu.Group>
-			<DropdownMenu.Label>Examples</DropdownMenu.Label>
+			<DropdownMenu.Label>Assistants</DropdownMenu.Label>
 			<DropdownMenu.Separator />
-			<DropdownMenu.Item
-				on:click={() => {
-					goto('/types-generation');
-				}}>Generate types Everywhere!</DropdownMenu.Item
-			>
 			<DropdownMenu.Item
 				on:click={() => {
 					goto('/sveltekit-assistant');
