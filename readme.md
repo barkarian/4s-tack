@@ -1,11 +1,11 @@
 🌐 Concept Project: 4s-tack stands for Strapi,Sveltekit,Shadcn-svelte,Superforms
+Develop highly customizable applications fasts with the help of context aware AI assistants!
 
 Introduction 🚀
-Build full stack web application is a blizz with this stack.
-Create entities and relations from Strapi UI and get types for your entities in your sveltekit!
-Utilize context aware Chat Assistants for building your application.
-Utilise strapi's lifecycles and custom web hook to build any backend code.
-When you need to deploy in production on AWS from microtica free deployment template:https://docs.microtica.com/deploy-a-new-strapi-app
+This is a stack that Generative AI understands 🪄🧙‍♂️
+Get Context aware chat!
+Create entities from UI and automatically have types on your whole application!
+Easily deployed and scalable architecture
 
 Technologies 🛠️
 Shadcn-Svelte: A fresh and intuitive library. 🏡
@@ -16,7 +16,7 @@ Superforms: Bridges SvelteKit frontend forms with the backend. 🌉
 🔑 Key Features:
 Manage your application with the help of AI powered dev-utils UI:
     -Use dev-utils to generate your types automatically.
-    -Use the context aware assistants(Powered by openAI):
+    -Use the context aware assistants located in dev-utils(Powered by openAI):
         -Sveltekit Assistant🤖
         -Strapi Assistant🤖
 Shadcn is my library of choise because of the readable UI components tailored for generative AI.
@@ -45,20 +45,15 @@ Easy to deploy and scale up/down 📊 🚀
          -on scale(AWS):microtica can help you deploy easily with no extra cost and handles everything from s3,ec2 and RDS.
         -on server:you can also easily deploy to digital ocean,plesk server etc.
 
-What is dev-utils:
-Dev utils will help you configure the project and will give you context aware assistants!✨✨✨
-
-How to use dev-utils:
-Just '''cd dev-utils && run npm run dev''' and you'll get a ui with step by step instructions...
-Don't forget to setup dev-utils->.env variables:
-    AUTH0_SETTINGS_URL:The url of auth0 application settings page
-    OPENAI_KEY:Your openai key
-After that you can generate types and let the AI to generate some Context for your current entities structures and relation.
-Then head from navigation to:
-    -sveltekit assistant
-    or
-    -strapi assistant 
-and get context aware chat!🪄🧙‍♂️
+DOCUMENTATION:
+For each directory(dev-utils,sveltekit,strapi):
+1)npm install on every directory
+2)create .env files for all 3 directories
+3)spin up dev-utils()
+4)Dev-utils will guide you to create an auth0 application and configure your authentication!
+5)Whenever you modify your entities structure is a good idea to generate new context 
+6)you can generate context from menubar:Types And Context->Update AI Context
+7)Now your sveltekit and strapi assistants are ready to help you build your application
 
 Remember this is only a starting template
 Feel free to customize further based on your project's specific needs and details! 🌟
