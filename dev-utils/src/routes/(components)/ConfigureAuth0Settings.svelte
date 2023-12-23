@@ -50,7 +50,7 @@
 						>Auth0 Settings</Button
 					>
 				</div>
-				<Button size="lg" variant="outline" on:click={() => goto('/types-generation')}
+				<Button size="lg" variant="outline" on:click={() => goto('/sveltekit-assistant')}
 					>I updated everything let's continue !</Button
 				>
 			</div>
