@@ -15,7 +15,8 @@ export async function generateSchemaDocumentationWithAi(): Promise<void> {
     messages: [
       {
         role: "system", content: `Given this example of how this entity json:
-                  {
+                  typeName: api::variation.variation,
+                  json:{
                       "kind": "collectionType",
                       "collectionName": "example_products",
                       "info": {
@@ -89,13 +90,21 @@ async function fetchEntitiesJsons(): Promise<string> {
   entityDirectories = entityDirectories.filter((directory) => !directory.startsWith('.'));
   const entitiesJsons: any[] = [];
 
+  //Get all api entities jsons
   for (const entityDirectory of entityDirectories) {
     const schemaPath: string = `${rootDirectory}/strapi/src/api/${entityDirectory}/content-types/${entityDirectory}/schema.json`;
     const schemaJson: string = fs.readFileSync(schemaPath, 'utf8');
     const parsedJson: any = JSON.parse(schemaJson);
 
-    entitiesJsons.push(parsedJson);
+    entitiesJsons.push({
+      typeName: `api::${entityDirectory}.${entityDirectory}`,
+      parsedJson
+    });
   }
+  //Get user entity json
+  const userSchemaPath: string = `${rootDirectory}/strapi/src/api/user-permissions/config/schema.json`;
+
+  console.log({ entitiesJsons })
   const entitiesJsonsText: string = entitiesJsons.map((json) => JSON.stringify(json)).join('\n');
   return entitiesJsonsText;
 }

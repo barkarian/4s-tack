@@ -1,3 +1,20 @@
+The transformed types for the given json entities are:
+
+Type for "api::example-product.example-product":
+```typescript
+type StrapiEntity<T> = T extends "api::example-product.example-product"
+  ? {
+      id: number;
+      name: string;
+      description: string;
+      images: StrapiEntity<"api::upload_file.upload_file">[];
+      variations: StrapiEntity<"api::variation.variation">[];
+    }
+  : never;
+```
+
+Type for "api::variation.variation":
+```typescript
 type StrapiEntity<T> = T extends "api::variation.variation"
   ? {
       id: number;
@@ -5,30 +22,7 @@ type StrapiEntity<T> = T extends "api::variation.variation"
       variationValue: string;
       products: StrapiEntity<"api::example-product.example-product">[];
     }
-  : T extends "api::example-product.example-product"
-  ? {
-      id: number;
-      name: string;
-      description: string;
-      images: StrapiMedia[];
-      variations: StrapiEntity<"api::variation.variation">[];
-    }
   : never;
+```
 
-type StrapiMedia = {
-  id: number;
-  url: string;
-  ext: string;
-  mime: string;
-  size: number;
-  previewUrl: string | null;
-  provider: string;
-  provider_metadata: {
-    public_id: string;
-    resource_type: string;
-  } | null;
-};
-
-type Entity = StrapiEntity<
-  "api::example-product.example-product" | "api::variation.variation"
->;
+Note: The type "StrapiEntity<"api::upload_file.upload_file">" is used for the `images` attribute of the "api::example-product.example-product" type and is not provided in the given data.
