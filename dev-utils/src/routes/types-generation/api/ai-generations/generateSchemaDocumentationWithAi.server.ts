@@ -15,7 +15,7 @@ export async function generateSchemaDocumentationWithAi(): Promise<void> {
     messages: [
       {
         role: "system", content: `Given this example of how this entity json:
-                  typeName: api::variation.variation,
+                  typeName: api::example-product.example-product,
                   json:{
                       "kind": "collectionType",
                       "collectionName": "example_products",
@@ -57,22 +57,29 @@ export async function generateSchemaDocumentationWithAi(): Promise<void> {
                     }
                     
                    This entity type will automatically generate the following type:
-                   type StrapiEntity<T> = T extends "api::variation.variation" 
+                   type StrapiEntity<T> = T extends "api::example-product.example-product"
                    ? {
                        id: number;
-                       variationName: string;
-                       variationValue: string;
-                       products: StrapiEntity<"api::example-product.example-product">[];
+                       name: string;
+                       description: string;
+                       images: Media[];
+                       variations: StrapiEntity<"api::variation.variation">[];
+                       ownerOfTheProduct: StrapiEntity<"plugin::users-permissions.user">;
                      }
-                   : T extends "api::example-product.example-product" 
+                   : T extends "api::variation.variation" 
                    ? {
-                       // Define the structure for example-product here
+                       // Define the structure for variation here
                      }
                    : never;
-               
-                  
+
+                   // if you don't know a type, assign it to any
+                   type Media=any;
                   ---
-                  Given this example transforms all of the jsons entities that the user will give you into typescript types like the example above: 
+                  Here is a list of typeNames and their respective jsons...Following the pattern above transform the following array into the corresponding StrapiEntity<T> (where T should extend every typeName of the array):
+                  ${entitiesJsons}
+
+                  ATTENTION:
+                  Do not generate examples just the type definition.
                   `},
       { role: 'user', content: entitiesJsons }],
     model: 'gpt-3.5-turbo',
@@ -102,8 +109,13 @@ async function fetchEntitiesJsons(): Promise<string> {
     });
   }
   //Get user entity json
-  const userSchemaPath: string = `${rootDirectory}/strapi/src/api/user-permissions/config/schema.json`;
-
+  const userSchemaPath: string = `${rootDirectory}/strapi/src/extensions/users-permissions/content-types/user/schema.json`;
+  const userSchemaJson: string = fs.readFileSync(userSchemaPath, 'utf8');
+  const parsedJson: any = JSON.parse(userSchemaJson);
+  entitiesJsons.push({
+    typeName: `plugin::users-permissions.permission`,
+    parsedJson
+  });
   console.log({ entitiesJsons })
   const entitiesJsonsText: string = entitiesJsons.map((json) => JSON.stringify(json)).join('\n');
   return entitiesJsonsText;

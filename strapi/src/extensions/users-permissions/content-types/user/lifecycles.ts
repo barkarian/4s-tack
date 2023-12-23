@@ -1,3 +1,4 @@
+import { StrapiEntity } from "$root/types/StrapiTypes";
 
 async function beforeUpdate(event: Event): Promise<void> {
 }

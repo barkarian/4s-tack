@@ -1,28 +1,37 @@
-The transformed types for the given json entities are:
-
-Type for "api::example-product.example-product":
-```typescript
 type StrapiEntity<T> = T extends "api::example-product.example-product"
   ? {
       id: number;
       name: string;
       description: string;
-      images: StrapiEntity<"api::upload_file.upload_file">[];
+      images: Media[];
       variations: StrapiEntity<"api::variation.variation">[];
+      ownerOfTheProduct: StrapiEntity<"plugin::users-permissions.user">;
     }
-  : never;
-```
-
-Type for "api::variation.variation":
-```typescript
-type StrapiEntity<T> = T extends "api::variation.variation"
+  : T extends "api::variation.variation" 
   ? {
-      id: number;
       variationName: string;
       variationValue: string;
       products: StrapiEntity<"api::example-product.example-product">[];
     }
+  : T extends "plugin::users-permissions.permission"
+  ? {
+      username: string;
+      email: string;
+      provider: string;
+      password: string;
+      resetPasswordToken: string;
+      confirmationToken: string;
+      confirmed: boolean;
+      blocked: boolean;
+      role: StrapiEntity<"plugin::users-permissions.role">;
+      productsOwned: StrapiEntity<"api::example-product.example-product">[];
+    }
   : never;
-```
 
-Note: The type "StrapiEntity<"api::upload_file.upload_file">" is used for the `images` attribute of the "api::example-product.example-product" type and is not provided in the given data.
+type Media = any;
+
+// Generated types
+type ExampleProductEntity = StrapiEntity<"api::example-product.example-product">;
+type VariationEntity = StrapiEntity<"api::variation.variation">;
+type UserEntity = StrapiEntity<"plugin::users-permissions.user">;
+type PermissionEntity = StrapiEntity<"plugin::users-permissions.permission">;
