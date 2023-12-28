@@ -10,7 +10,7 @@
 
 		<div class="ml-auto flex items-center space-x-4">
 			<ToggleMode></ToggleMode>
-			<DropdownNav />
+			<!-- <DropdownNav /> -->
 		</div>
 	</div>
 </div>

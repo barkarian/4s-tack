@@ -14,9 +14,7 @@
 {:else}
 	<div class="flex min-h-screen flex-col">
 		<Navigation />
-		<div style={PUBLIC_PWA_BODY_VH}>
-			<slot />
-		</div>
+		<iframe style={PUBLIC_PWA_BODY_VH} src="http://localhost:3000"></iframe>
 		<Footer></Footer>
 	</div>
 {/if}

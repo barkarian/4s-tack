@@ -3,7 +3,7 @@
 	import ConfigureAuth0Settings from './(components)/ConfigureAuth0Settings.svelte';
 	import InitialAuthenticationSetup from './(components)/InitialAuthenticationSetup.svelte';
 	export let data: PageData;
-	const { auth0CallbackUrlToSet, auth0SettingsUrl } = data;
+	const { auth0CallbackUrlToSet } = data;
 </script>
 
 <div class="flex h-full">

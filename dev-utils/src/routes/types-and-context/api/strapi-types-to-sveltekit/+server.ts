@@ -4,5 +4,6 @@ import type { RequestHandler } from "./$types";
 
 export const POST: RequestHandler = async ({ request }) => {
     const status = copyStrapiTypesToFrontend()
+
     return json({ status });
 };

@@ -2,15 +2,25 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { rootDirectory } from '$lib/utils/Paths';
 import fs from 'fs';
-import { generateSchemaDocumentationWithAi } from '../../(promptTemplates)/generateSchemaDocumentationWithAi.server';
-import { copyStrapiTypesToFrontend } from '../../(utils)/copyStrapiTypesToFrontend.server';
+import { generateSchemaDocumentationWithAi } from './(promptTemplates)/generateSchemaDocumentationWithAi.server';
+import { createPromptVariableItemForTsArray, storeTypescriptInFile } from '$lib/utils/typescriptGen';
 
 
 export const POST: RequestHandler = async ({ request }) => {
     let status = "ok"
     try {
         const entitiesJsons: string = await fetchEntitiesJsons();
-        const response = await generateSchemaDocumentationWithAi(entitiesJsons);
+        const openaiResponseMsg: string = await generateSchemaDocumentationWithAi(entitiesJsons);
+        const strapiTypesDocs: string = createPromptVariableItemForTsArray("strapi_current_entities_types", openaiResponseMsg);
+        const helloWorld: string = createPromptVariableItemForTsArray("helloWorld", "hello big world");
+        const generatedTsCode: string = `
+        export type AiContext = { key: string, context: string }
+        
+        export const aiContexts: AiContext[] =[
+            ${[strapiTypesDocs, helloWorld].join(',\n')}
+        ]`;
+        storeTypescriptInFile(`${rootDirectory}/chatbot-ui/dev-utils/data/AiContextRetrieval`, generatedTsCode)
+        //Create a typescript source code
     } catch (e) {
         status = "An error occured check at the dev-utils console"
     } finally {
