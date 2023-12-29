@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
+    "typesgen": "npm run strapi ts:generate-types --debug",
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",

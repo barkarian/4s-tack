@@ -70,6 +70,12 @@
       "relation": "oneToMany",
       "target": "api::example-product.example-product",
       "mappedBy": "ownerOfTheProduct"
+    },
+    "variations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::variation.variation",
+      "mappedBy": "user"
     }
   }
 }

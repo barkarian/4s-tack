@@ -22,6 +22,12 @@
       "relation": "manyToMany",
       "target": "api::example-product.example-product",
       "mappedBy": "variations"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "variations"
     }
   }
 }

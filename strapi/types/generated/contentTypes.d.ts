@@ -423,6 +423,11 @@ export interface ApiVariationVariation extends Schema.CollectionType {
       'manyToMany',
       'api::example-product.example-product'
     >;
+    user: Attribute.Relation<
+      'api::variation.variation',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -742,6 +747,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'oneToMany',
       'api::example-product.example-product'
+    >;
+    variations: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::variation.variation'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

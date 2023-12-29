@@ -1,5 +1,5 @@
 import type { PageServerLoad } from "./$types";
-import { copyStrapiTypesToFrontend } from "./(utils)/copyStrapiTypesToFrontend.server";
+import { copyStrapiTypesToFrontend } from "./api/strapi-types-to-sveltekit/(utils)/copyStrapiTypesToFrontend.server";
 
 export const load: PageServerLoad = async () => {
     // Spin up tunnels
