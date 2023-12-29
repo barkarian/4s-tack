@@ -49,11 +49,12 @@ DOCUMENTATION:
 For each directory(dev-utils,sveltekit,strapi):
 1)npm install on every directory
 2)create .env files for all 3 directories
-3)spin up dev-utils()
-4)Dev-utils will guide you to create an auth0 application and configure your authentication!
-5)Whenever you modify your entities structure is a good idea to generate new context 
-6)you can generate context from menubar:Types And Context->Update AI Context
-7)Now your sveltekit and strapi assistants are ready to help you build your application
+3)spin up chat-bot ui
+4)spin up dev-utils()
+5)Dev-utils will guide you to create an auth0 application and configure your authentication!
+6)Whenever you modify your entities structure is a good idea to generate new context 
+7)you can generate context from menubar:Types And Context->Update AI Context
+8)You can use chatbot client similar to chatgpt and create prompt templates that you can trigger with "/"
 
 Remember this is only a starting template
 Feel free to customize further based on your project's specific needs and details! 🌟
